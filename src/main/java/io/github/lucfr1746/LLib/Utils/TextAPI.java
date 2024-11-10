@@ -176,4 +176,28 @@ public class TextAPI {
             this.text = PlaceholderAPI.setPlaceholders(p, this.text);
         return this;
     }
+
+    public boolean isNumeric() {
+        if (this.text == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(this.text);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isInteger() {
+        if (this.text == null) {
+            return false;
+        }
+        try {
+            int i = Integer.parseInt(this.text);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }
