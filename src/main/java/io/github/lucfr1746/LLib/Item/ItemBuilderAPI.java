@@ -513,6 +513,9 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return null;
 
         NBT.modify(this.itemStack, nbt -> {
+            if (!nbt.hasTag("description")) {
+                nbt.setString("description", "");
+            }
             nbt.getOrDefault("description", "");
         });
         return "";
