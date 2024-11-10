@@ -46,6 +46,7 @@ public class ItemBuilderAPI {
     private boolean isUnique;
     private boolean isRecombobulated;
     private Long timestamp;
+    private int descriptionLineLength;
 
     public ItemBuilderAPI(@NotNull ItemStack itemStack) {
         this.itemStack = itemStack;
@@ -95,6 +96,7 @@ public class ItemBuilderAPI {
         this.isUnique = itemUtilsAPI.isUnique();
         this.isRecombobulated = itemUtilsAPI.isRecombobulated();
         this.timestamp = itemUtilsAPI.getTimestamp();
+        this.descriptionLineLength = itemUtilsAPI.getDescriptionLineLength();
     }
 
     public @NotNull ItemStack build() {
@@ -679,6 +681,22 @@ public class ItemBuilderAPI {
     public long getTimestamp() {
         if (isInvalidItem()) return -1;
         return this.timestamp;
+    }
+
+    public ItemBuilderAPI setDescriptionLineLength(int value) {
+        if (isInvalidItem()) return null;
+        try {
+            new ItemUtilsAPI(this.itemStack).setDescriptionLineLength(value);
+            this.descriptionLineLength = value;
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("Error while setting description line length of the item!");
+        }
+        return this;
+    }
+
+    public int getDescriptionLineLength() {
+        if (isInvalidItem()) return -1;
+        return this.descriptionLineLength;
     }
 
     private boolean isInvalidItem() {

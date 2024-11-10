@@ -56,6 +56,24 @@ public class ItemUtilsAPI {
         });
     }
 
+    public ItemUtilsAPI setDescriptionLineLength(int value) {
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
+            nbtList.setInteger("description_cap", value);
+        });
+        return this;
+    }
+
+    public int getDescriptionLineLength() {
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
+            if (!nbtList.hasTag("description_cap")) {
+                nbtList.setInteger("description_cap", 30);
+            }
+            return nbtList.getInteger("description_cap");
+        });
+    }
+
     public ItemUtilsAPI setGlowing(boolean value) {
         NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
