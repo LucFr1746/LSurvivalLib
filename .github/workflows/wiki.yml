@@ -1,4 +1,4 @@
-name: Wiki Sync CI
+name: Wiki CI
 
 on:
   push:
@@ -8,33 +8,27 @@ on:
 permissions:
   contents: write
 jobs:
-  sync-wiki:
+  wiki:
     if: ${{ github.repository_owner == 'lucfr1746' }}
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout base code
         uses: actions/checkout@v3
         with:
           path: base-code
-
-      - name: Checkout Wiki repository
+      - name: Checkout wiki code
         uses: actions/checkout@v3
         with:
-          repository: ${{ github.repository }}.wiki
+          repository: ${{github.repository}}.wiki
           path: wiki
-
-      - name: Sync wiki content
+      - name: Push to wiki
         run: |
-          rm -rf wiki/*
-          cp -r base-code/wiki/* wiki/
           cd wiki
+          rm *.md
+          cp ../base-code/wiki/* ./
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "Sync wiki content"
-            git push
-          else
-            echo "No changes to push"
-          fi
+          git diff-index --quiet HEAD || (git commit -m "Add changes" && git push)
