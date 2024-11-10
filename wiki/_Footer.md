@@ -1,1 +1,1 @@
-LucFr1746 Copy-right
+LLib by LucFr1746 Copy-right
