@@ -1,6 +1,6 @@
 <div align="center">
 
-# Welcome to LWardrobe
+# Welcome to LLib
 
 The library for LucFr plugins.
 
