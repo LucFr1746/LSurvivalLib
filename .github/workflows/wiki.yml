@@ -1,0 +1,40 @@
+name: Wiki Sync CI
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+jobs:
+  sync-wiki:
+    if: ${{ github.repository_owner == 'lucfr1746' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: base-code
+
+      - name: Checkout Wiki repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository }}.wiki
+          path: wiki
+
+      - name: Sync wiki content
+        run: |
+          rm -rf wiki/*
+          cp -r base-code/wiki/* wiki/
+          cd wiki
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Sync wiki content"
+            git push
+          else
+            echo "No changes to push"
+          fi

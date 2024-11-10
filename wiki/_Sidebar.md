@@ -1,0 +1,1 @@
+[Home](https://github.com/LucFr1746/LLib/wiki)
