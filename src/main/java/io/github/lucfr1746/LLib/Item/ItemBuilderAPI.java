@@ -106,7 +106,9 @@ public class ItemBuilderAPI {
 
         List<String> finalLores = new ArrayList<>();
         if (getType().name().startsWith("LEATHER")) finalLores.add("&7Color: " + getLeatherArmorColor());
-
+    // Item's description
+        if (!getDescription().isEmpty())
+            finalLores.addAll(getDescriptionAutoAlignLores(getDescriptionLineLength()));
     // Category description
         if (!finalLores.isEmpty()) finalLores.add("");
         String categoryDes = this.category.getDescription();
@@ -508,25 +510,40 @@ public class ItemBuilderAPI {
         NBT.modify(this.itemStack, nbt -> {
             nbt.setString("description", description);
         });
+        this.description = description;
         return this;
     }
 
     public String getDescription() {
         if (isInvalidItem()) return null;
 
-        NBT.modify(this.itemStack, nbt -> {
+        return NBT.modify(this.itemStack, nbt -> {
             if (!nbt.hasTag("description")) {
                 nbt.setString("description", "");
             }
-            nbt.getOrDefault("description", "");
+            return nbt.getOrDefault("description", "");
         });
-        return "";
     }
 
     public List<String> getDescriptionAutoAlignLores(int maxLength) {
         if (isInvalidItem()) return null;
+        return List.of(ChatPaginator.wordWrap(new TextAPI(this.description).colorRecognise().build(), maxLength));
+    }
 
-        return Arrays.asList(ChatPaginator.wordWrap(new TextAPI(this.description).colorRecognise().build(), maxLength));
+    public ItemBuilderAPI setDescriptionLineLength(int value) {
+        if (isInvalidItem()) return null;
+        try {
+            new ItemUtilsAPI(this.itemStack).setDescriptionLineLength(value);
+            this.descriptionLineLength = value;
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("Error while setting description line length of the item!");
+        }
+        return this;
+    }
+
+    public int getDescriptionLineLength() {
+        if (isInvalidItem()) return -1;
+        return this.descriptionLineLength;
     }
 
     public ItemBuilderAPI setTier(Tier tier) {
@@ -684,22 +701,6 @@ public class ItemBuilderAPI {
     public long getTimestamp() {
         if (isInvalidItem()) return -1;
         return this.timestamp;
-    }
-
-    public ItemBuilderAPI setDescriptionLineLength(int value) {
-        if (isInvalidItem()) return null;
-        try {
-            new ItemUtilsAPI(this.itemStack).setDescriptionLineLength(value);
-            this.descriptionLineLength = value;
-        } catch (Exception e) {
-            Bukkit.getLogger().warning("Error while setting description line length of the item!");
-        }
-        return this;
-    }
-
-    public int getDescriptionLineLength() {
-        if (isInvalidItem()) return -1;
-        return this.descriptionLineLength;
     }
 
     private boolean isInvalidItem() {
