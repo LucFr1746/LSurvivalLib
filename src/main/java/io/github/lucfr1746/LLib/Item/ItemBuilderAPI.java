@@ -29,7 +29,7 @@ public class ItemBuilderAPI {
 
     private final ItemStack itemStack;
     private String displayName;
-    private String internalName;
+    private String id;
     private String skullTexture;
     private String description;
 
@@ -70,7 +70,7 @@ public class ItemBuilderAPI {
 
     private void loadBasicProperties() {
         this.displayName = getDisplayName();
-        this.internalName = getInternalName();
+        this.id = getID();
         this.skullTexture = getSkullTexture();
         this.description = getDescription();
     }
@@ -422,28 +422,34 @@ public class ItemBuilderAPI {
         return new TextAPI(getDisplayName()).stripColor().build();
     }
 
-    public ItemBuilderAPI setInternalName(String internalName) {
+    public ItemBuilderAPI setID(String inputID) {
         if (isInvalidItem()) return null;
 
-        internalName = internalName.toUpperCase().replaceAll(" ", "_");
+        String finalID = getFinalID(inputID);
 
-        String finalInternalName = internalName;
         NBT.modify(this.itemStack, nbt -> {
-            nbt.setString("internal_name", finalInternalName);
+            nbt.setString("id", finalID);
         });
-        this.internalName = internalName;
+        this.id = finalID;
         return this;
     }
 
-    public String getInternalName() {
+    public String getID() {
         if (isInvalidItem()) return null;
 
         return NBT.modify(this.itemStack, nbt -> {
-            if (!nbt.hasTag("internal_name")) {
-                nbt.setString("internal_name", "NONE");
+            if (!nbt.hasTag("id")) {
+                nbt.setString("id", getFinalID(getStripDisplayName()));
             }
-            return nbt.getOrDefault("internal_name", "NONE");
+            return nbt.getOrDefault("id", getFinalID(getStripDisplayName()));
         });
+    }
+
+    private String getFinalID(String input) {
+        return input.toUpperCase()
+                .replaceAll(" +", "_")      // Replace all spaces with single underscores
+                .replaceAll("_+", "_")      // Replace all underscores with single underscores
+                .replaceAll("^_+|_+$", ""); // Trim leading/trailing underscores
     }
 
     public ItemBuilderAPI setLores(List<String> lores) {
