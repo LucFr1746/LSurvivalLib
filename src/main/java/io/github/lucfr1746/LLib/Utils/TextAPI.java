@@ -146,21 +146,41 @@ public class TextAPI {
 
     public TextAPI hexRecognise() {
         StringBuilder result = new StringBuilder();
-        String[] string = this.text.split("#");
+        String[] parts = this.text.split("<hex>");
 
-        if (string.length == 0) {
+        if (parts.length == 0) {
             return this;
         }
 
-        for (String path : string) {
-            if (!path.isEmpty() && path.charAt(0) != '&' && !path.equals(string[0])) {
-                path = "#" + path;
-                String hexColor = path.substring(0, 7);
-                path = path.replace(path.substring(0, 7), "");
-                path = ChatColor.of(hexColor) + path;
+        for (int i = 0; i < parts.length; i++) {
+            String part = parts[i];
+
+            // Skip the first part if it's not wrapped in <hex> tags
+            if (i == 0 || part.isEmpty()) {
+                result.append(part);
+                continue;
             }
-            result.append(path);
+
+            // Check if the part contains a valid hex code and ends with "</hex>"
+            int endIndex = part.indexOf("</hex>");
+            if (endIndex != -1) {
+                String hexText = part.substring(0, endIndex); // Extract text inside the <hex>...<hex> tags
+                if (hexText.startsWith("#") && hexText.length() > 7) {
+                    String hexColor = hexText.substring(1, 7);    // Extract the hex color (e.g., #A06540)
+                    String text = hexText.substring(8);          // Extract the text after the "-"
+                    result.append(ChatColor.of("#" + hexColor)).append(text);
+                } else {
+                    // If the format is invalid, append the part as-is
+                    result.append("<hex>").append(part);
+                }
+                // Append the rest of the string after </hex>
+                result.append(part.substring(endIndex + 6));
+            } else {
+                // If no closing </hex> tag is found, append as-is
+                result.append("<hex>").append(part);
+            }
         }
+
         this.text = result.toString();
         return this;
     }
