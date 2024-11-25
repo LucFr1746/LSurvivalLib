@@ -29,4 +29,9 @@ Maintained by LucFr1746.
 
 ### [SpigotMC Resource Page](#)
 #### [Installation Instructions](#)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/lucfr1746/LLib)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/lucfr1746/LLib.svg)](http://isitmaintained.com/project/lucfr1746/LLib "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/lucfr1746/LLib.svg)](http://isitmaintained.com/project/lucfr1746/LLib "Percentage of issues still open")
+![GitHub](https://img.shields.io/github/license/lucfr1746/LLib)
 </div>
