@@ -11,7 +11,7 @@ public class UtilsAPI {
      * @return a string representing the color in hexadecimal format, prefixed with '#'
      *         (e.g., "#FF5733" for an RGB color with red=255, green=87, blue=51)
      */
-    public String colorToHex(Color color) {
+    public static String colorToHex(Color color) {
         int r = color.getRed();
         int g = color.getGreen();
         int b = color.getBlue();
@@ -28,7 +28,7 @@ public class UtilsAPI {
      * @return a {@link Color} object representing the color corresponding to the given hexadecimal string
      * @throws IllegalArgumentException if the provided string is not a valid hex color
      */
-    public Color hexToColor(String hex) {
+    public static Color hexToColor(String hex) {
         if (hex.startsWith("#")) {
             hex = hex.substring(1);
         }
