@@ -11,13 +11,14 @@ import io.github.lucfr1746.LLib.Utils.TextAPI;
 import io.github.lucfr1746.LLib.Utils.UtilsAPI;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.*;
+import org.bukkit.material.Colorable;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.ChatPaginator;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +28,7 @@ import java.util.stream.Collectors;
 
 public class ItemBuilderAPI {
 
-    private final ItemStack itemStack;
+    @NotNull private final ItemStack itemStack;
     private String displayName;
     private String id;
     private String skullTexture;
@@ -105,7 +106,7 @@ public class ItemBuilderAPI {
         setDisplayName(this.displayName);
 
         List<String> finalLores = new ArrayList<>();
-        if (getType().name().startsWith("LEATHER")) finalLores.add("&7Color: " + getLeatherArmorColor());
+        if (getType().name().startsWith("LEATHER_")) finalLores.add("&7Color: " + getItemHex());
     // Item's description
         if (!getDescription().isEmpty())
             finalLores.addAll(getDescriptionAutoAlignLores(getDescriptionLineLength()));
@@ -128,8 +129,8 @@ public class ItemBuilderAPI {
         return setLores(finalLores).setAllFlags().itemStack;
     }
 
-    public @NotNull ItemMeta getItemMeta() {
-        return Objects.requireNonNull(this.itemStack.getItemMeta(), "ItemMeta cannot be null!");
+    public ItemMeta getItemMeta() {
+        return this.itemStack.getItemMeta();
     }
 
     public ItemBuilderAPI setType(@NotNull Material material) {
@@ -201,13 +202,12 @@ public class ItemBuilderAPI {
     }
 
     public int getMaxDurability() {
-        if (isInvalidItem()) return 0;
+        if (isInvalidItem()) return -1;
 
-        ItemMeta itemMeta = getItemMeta();
-        if (itemMeta.isUnbreakable()) return -1;
+        if (getItemMeta().isUnbreakable()) return -1;
 
-        if (itemMeta instanceof Damageable damage) {
-            return damage.getMaxDamage();
+        if (getItemMeta() instanceof Damageable damage) {
+            return damage.hasMaxDamage() ? damage.getMaxDamage() : getType().getMaxDurability();
         } else {
             throw new IllegalArgumentException("The item have no durability!");
         }
@@ -283,36 +283,109 @@ public class ItemBuilderAPI {
     public ItemBuilderAPI setPotionType(@NotNull PotionType potType) {
         if (isInvalidItem()) return null;
 
-        PotionMeta potionMeta = (PotionMeta) getItemMeta();
-        potionMeta.setBasePotionType(potType);
-        this.itemStack.setItemMeta(potionMeta);
+        if (getItemMeta() instanceof PotionMeta potionMeta) {
+            potionMeta.setBasePotionType(potType);
+            this.itemStack.setItemMeta(potionMeta);
+        } else {
+            throw new IllegalArgumentException("The item must be a potion!");
+        }
         return this;
     }
 
     public PotionType getPotionType() {
-        return ((PotionMeta) getItemMeta()).getBasePotionType();
-    }
-
-    public ItemBuilderAPI setLeatherArmorColor(String hexColor) {
         if (isInvalidItem()) return null;
 
+        if (getItemMeta() instanceof PotionMeta potionMeta) {
+            return potionMeta.getBasePotionType();
+        } else {
+            throw new IllegalArgumentException("The item must be a potion!");
+        }
+    }
+
+    public ItemBuilderAPI setItemColor(Color color) {
+        if (isInvalidItem()) return null;
+
+        if (getItemMeta() instanceof PotionMeta potionMeta) {
+            potionMeta.setColor(color);
+            this.itemStack.setItemMeta(potionMeta);
+            return this;
+        }
         if (getItemMeta() instanceof LeatherArmorMeta leatherArmorMeta) {
-            leatherArmorMeta.setColor(new UtilsAPI().hexToColor(hexColor));
+            leatherArmorMeta.setColor(color);
             this.itemStack.setItemMeta(leatherArmorMeta);
-        } else {
-            throw new IllegalArgumentException("The item must be a leather armor piece");
+            return this;
         }
-        return this;
+        if (getItemMeta() instanceof FireworkEffectMeta fireworkEffectMeta) {
+            FireworkEffect oldEffect = fireworkEffectMeta.getEffect(); // may be null?
+            FireworkEffect.Builder newEffect = FireworkEffect.builder().flicker(oldEffect != null && oldEffect.hasFlicker())
+                    .trail(oldEffect != null && oldEffect.hasTrail()).withColor(color);
+            if (oldEffect != null) // may be null?
+                newEffect.withFade(oldEffect.getFadeColors());
+            fireworkEffectMeta.setEffect(newEffect.build());
+            this.itemStack.setItemMeta(fireworkEffectMeta);
+            return this;
+        }
+        return null;
     }
 
-    public String getLeatherArmorColor() {
-        if (isInvalidItem()) return null;
+    public ItemBuilderAPI setItemColor(int red, int green, int blue) {
+        return setItemColor(Color.fromRGB(red, green, blue));
+    }
 
-        if (getItemMeta() instanceof LeatherArmorMeta leatherArmorMeta) {
-            return new UtilsAPI().colorToHex(leatherArmorMeta.getColor());
-        } else {
-            throw new IllegalArgumentException("The item must be a leather armor piece");
+    public Color getItemColor() {
+        if (isInvalidItem()) {
+            return null;
         }
+
+        ItemMeta itemMeta = getItemMeta();
+        switch (itemMeta) {
+            case PotionMeta potionMeta -> {
+                // Handle potions
+                Color potionColor = potionMeta.getColor();
+                if (potionColor != null) {
+                    return potionColor;
+                }
+
+                PotionType basePotionType = potionMeta.getBasePotionType();
+                if (basePotionType == null) {
+                    return null;
+                }
+
+                List<PotionEffect> potionEffects = basePotionType.getPotionEffects();
+                Color aggregatedColor = null;
+                for (PotionEffect effect : potionEffects) {
+                    if (aggregatedColor == null) {
+                        aggregatedColor = effect.getType().getColor();
+                    } else {
+                        aggregatedColor = aggregatedColor.mixColors(effect.getType().getColor());
+                    }
+                }
+                return aggregatedColor;
+            }
+            case LeatherArmorMeta leatherArmorMeta -> {
+                // Handle leather armor
+                return leatherArmorMeta.getColor();
+            }
+            case FireworkEffectMeta fireworkEffectMeta -> {
+                // Handle firework effects
+                FireworkEffect effect = fireworkEffectMeta.getEffect();
+                if (effect != null && !effect.getColors().isEmpty()) {
+                    return effect.getColors().getFirst(); // Return the first color
+                }
+                return null;
+            }
+            case null, default -> throw new IllegalArgumentException(
+                    "Unsupported item type. Item must be leather armor, a firework star, a potion, or a tipped arrow."
+            );
+        }
+    }
+
+    public ItemBuilderAPI setItemHex(String hexColor) {
+        return setItemColor(UtilsAPI.hexToColor(hexColor).getRed(), UtilsAPI.hexToColor(hexColor).getGreen(), UtilsAPI.hexToColor(hexColor).getBlue());
+    }
+
+    public String getItemHex() {
+        return UtilsAPI.colorToHex(getItemColor());
     }
 
     public ItemBuilderAPI setSkullTexture(String texture) {
