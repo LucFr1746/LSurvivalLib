@@ -17,11 +17,11 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
-import org.bukkit.material.Colorable;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.ChatPaginator;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 public class ItemBuilderAPI {
 
     @NotNull private final ItemStack itemStack;
+    private final boolean isAdvancedFormat;
     private String displayName;
     private String id;
     private String skullTexture;
@@ -49,13 +50,24 @@ public class ItemBuilderAPI {
     private Long timestamp;
     private int descriptionLineLength;
 
+    public ItemBuilderAPI(@NotNull ItemStack itemStack, boolean isAdvancedFormat) {
+        this.itemStack = itemStack;
+        this.isAdvancedFormat = isAdvancedFormat;
+        initializeItem();
+    }
+
     public ItemBuilderAPI(@NotNull ItemStack itemStack) {
         this.itemStack = itemStack;
+        this.isAdvancedFormat = false;
         initializeItem();
     }
 
     public ItemBuilderAPI(@NotNull Material material) {
         this(new ItemStack(material));
+    }
+
+    public ItemBuilderAPI(@NotNull Material material, boolean isAdvancedFormat) {
+        this(new ItemStack(material), isAdvancedFormat);
     }
 
     public ItemBuilderAPI() {
@@ -64,9 +76,11 @@ public class ItemBuilderAPI {
 
     private void initializeItem() {
         loadBasicProperties();
-        loadTierData();
-        loadCategoryData();
-        loadItemUtilsData();
+        if (!isAdvancedFormat) {
+            loadTierData();
+            loadCategoryData();
+            loadItemUtilsData();
+        }
     }
 
     private void loadBasicProperties() {
@@ -101,7 +115,7 @@ public class ItemBuilderAPI {
     }
 
     public @NotNull ItemStack build() {
-        if (this.category == Category.UNCLASSIFIED) return this.itemStack;
+        if (this.category == Category.UNCLASSIFIED || !this.isAdvancedFormat) return this.itemStack;
 
         setDisplayName(this.displayName);
 
@@ -215,7 +229,10 @@ public class ItemBuilderAPI {
 
     public ItemBuilderAPI setUnbreakable(boolean value) {
         if (isInvalidItem()) return null;
-        getItemMeta().setUnbreakable(value);
+
+        ItemMeta itemMeta = getItemMeta();
+        itemMeta.setUnbreakable(value);
+        this.itemStack.setItemMeta(itemMeta);
         return this;
     }
 
@@ -302,7 +319,7 @@ public class ItemBuilderAPI {
         }
     }
 
-    public ItemBuilderAPI setItemColor(Color color) {
+    public ItemBuilderAPI setItemColor(@Nullable Color color) {
         if (isInvalidItem()) return null;
 
         if (getItemMeta() instanceof PotionMeta potionMeta) {
@@ -316,13 +333,20 @@ public class ItemBuilderAPI {
             return this;
         }
         if (getItemMeta() instanceof FireworkEffectMeta fireworkEffectMeta) {
-            FireworkEffect oldEffect = fireworkEffectMeta.getEffect(); // may be null?
-            FireworkEffect.Builder newEffect = FireworkEffect.builder().flicker(oldEffect != null && oldEffect.hasFlicker())
-                    .trail(oldEffect != null && oldEffect.hasTrail()).withColor(color);
-            if (oldEffect != null) // may be null?
-                newEffect.withFade(oldEffect.getFadeColors());
-            fireworkEffectMeta.setEffect(newEffect.build());
-            this.itemStack.setItemMeta(fireworkEffectMeta);
+            if (color != null) {
+                FireworkEffect oldEffect = fireworkEffectMeta.getEffect(); // may be null?
+                FireworkEffect.Builder newEffect = FireworkEffect.builder()
+                        .flicker(oldEffect != null && oldEffect.hasFlicker())
+                        .trail(oldEffect != null && oldEffect.hasTrail()).withColor(color);
+                if (oldEffect != null)
+                    newEffect.withFade(oldEffect.getFadeColors());
+                fireworkEffectMeta.setEffect(newEffect.build());
+                this.itemStack.setItemMeta(fireworkEffectMeta);
+            } else {
+                setType(Material.BARRIER);
+                this.itemStack.setItemMeta(getItemMeta());
+                setType(Material.FIREWORK_STAR);
+            }
             return this;
         }
         return null;
@@ -502,8 +526,8 @@ public class ItemBuilderAPI {
 
         NBT.modify(this.itemStack, nbt -> {
             nbt.setString("id", finalID);
+            this.id = finalID;
         });
-        this.id = finalID;
         return this;
     }
 
@@ -513,6 +537,7 @@ public class ItemBuilderAPI {
         return NBT.modify(this.itemStack, nbt -> {
             if (!nbt.hasTag("id")) {
                 nbt.setString("id", getFinalID(getStripDisplayName()));
+                this.id = getFinalID(getStripDisplayName());
             }
             return nbt.getOrDefault("id", getFinalID(getStripDisplayName()));
         });
@@ -677,6 +702,11 @@ public class ItemBuilderAPI {
         return this.defaultCategory;
     }
 
+    public Category getMaterialCategory() {
+        if (isInvalidItem()) return null;
+        return new CategoryAPI(this.itemStack).getDefaultCategory();
+    }
+
     public List<Category> getNearestCategories() {
         if (isInvalidItem()) return null;
         return this.nearestCategories;
@@ -783,6 +813,6 @@ public class ItemBuilderAPI {
     }
 
     private boolean isInvalidItem() {
-        return this.itemStack == null || getType() == Material.AIR;
+        return getType() == Material.AIR;
     }
 }
