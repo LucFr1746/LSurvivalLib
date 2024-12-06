@@ -220,4 +220,12 @@ public class TextAPI {
         }
         return true;
     }
+
+    public TextAPI convertToEnumStringFormat() {
+        this.text = this.text.toUpperCase()
+                .replaceAll(" +", "_")      // Replace all spaces with single underscores
+                .replaceAll("_+", "_")      // Replace all underscores with single underscores
+                .replaceAll("^_+|_+$", ""); // Trim leading/trailing underscores
+        return this;
+    }
 }
