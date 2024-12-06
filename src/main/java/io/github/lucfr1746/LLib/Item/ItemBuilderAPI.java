@@ -57,9 +57,7 @@ public class ItemBuilderAPI {
     }
 
     public ItemBuilderAPI(@NotNull ItemStack itemStack) {
-        this.itemStack = itemStack;
-        this.isAdvancedFormat = false;
-        initializeItem();
+        this(itemStack, false);
     }
 
     public ItemBuilderAPI(@NotNull Material material) {
@@ -76,7 +74,7 @@ public class ItemBuilderAPI {
 
     private void initializeItem() {
         loadBasicProperties();
-        if (!isAdvancedFormat) {
+        if (isAdvancedFormat) {
             loadTierData();
             loadCategoryData();
             loadItemUtilsData();
