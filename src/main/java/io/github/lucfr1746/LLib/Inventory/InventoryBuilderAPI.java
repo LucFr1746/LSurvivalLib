@@ -1,85 +1,57 @@
 package io.github.lucfr1746.LLib.Inventory;
 
-import io.github.lucfr1746.LLib.Item.ItemBuilderAPI;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class InventoryBuilderAPI {
+public abstract class InventoryBuilderAPI implements InventoryHandler {
 
     private final Inventory inventory;
+    private final Map<Integer, InventoryButton> buttonMap = new HashMap<>();
 
-    public InventoryBuilderAPI(int size, String title) {
-        this(null, size, title);
+    public InventoryBuilderAPI() {
+        this.inventory = this.createInventory();
     }
 
-    public InventoryBuilderAPI(InventoryHolder inventoryHolder, int size, String title) {
-        this.inventory = Bukkit.createInventory(inventoryHolder, size, title);
-    }
-
-    public InventoryBuilderAPI(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public Inventory build() {
+    public Inventory getInventory() {
         return this.inventory;
     }
 
-    public InventoryBuilderAPI setItemAtSlot(int slot, ItemStack itemStack) {
-        this.inventory.setItem(slot, itemStack);
-        return this;
+    public void addButton(int slot, InventoryButton button) {
+        this.buttonMap.put(slot, button);
     }
 
-    public InventoryBuilderAPI setItemAtSlots(List<Integer> slots, ItemStack itemStack) {
-        for (int slot : slots) {
-            this.inventory.setItem(slot, itemStack);
+    public void decorate(Player player) {
+        this.buttonMap.forEach((slot, button) -> {
+            ItemStack icon = button.getIconCreator().apply(player);
+            this.inventory.setItem(slot, icon);
+        });
+    }
+
+    @Override
+    public void onClick(InventoryClickEvent event) {
+        event.setCancelled(true);
+        int slot = event.getSlot();
+        InventoryButton button = this.buttonMap.get(slot);
+        if (button != null) {
+            button.getEventConsumer().accept(event);
         }
-        return this;
     }
 
-    public InventoryBuilderAPI setItemsAtSlots(List<Integer> slots, List<ItemStack> itemStacks) {
-        int minSize = Math.min(slots.size(), itemStacks.size());
-        for (int i = 0; i < minSize; i++) {
-            this.inventory.setItem(slots.get(i), itemStacks.get(i));
-        }
-        return this;
+    @Override
+    public void onOpen(InventoryOpenEvent event) {
+        this.decorate((Player) event.getPlayer());
     }
 
-    public InventoryBuilderAPI setFullBackgroundOf(Material material, boolean force, boolean hideTooltip) {
-        ItemStack backgroundItem = new ItemBuilderAPI(material)
-                .setDisplayName(" ", true)
-                .setHideTooltip(hideTooltip)
-                .setUnclassified(true)
-                .build();
-
-        for (int i = 0; i < this.inventory.getSize(); i++) {
-            ItemStack invItem = this.inventory.getItem(i);
-            if (force || invItem == null || invItem.getType() == Material.AIR) {
-                this.inventory.setItem(i, backgroundItem);
-            }
-        }
-        return this;
+    @Override
+    public void onClose(InventoryCloseEvent event) {
     }
 
-    public InventoryBuilderAPI setCloseButton(int slot) {
-        ItemStack closeButton = new ItemBuilderAPI(Material.BARRIER)
-                .setDisplayName("&cClose", true)
-                .setUnclassified(true)
-                .build();
-        this.inventory.setItem(slot, closeButton);
-        return this;
-    }
-
-    public ItemStack getItemAt(int index) {
-        return this.inventory.getItem(index);
-    }
-
-    public InventoryBuilderAPI clearItems() {
-        this.inventory.clear();
-        return this;
-    }
+    protected abstract Inventory createInventory();
 }
