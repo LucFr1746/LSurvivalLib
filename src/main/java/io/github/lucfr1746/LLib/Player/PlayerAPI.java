@@ -173,10 +173,10 @@ public class PlayerAPI {
      * Checks if the player has enough available space in their inventory to hold the specified number of items.
      * This includes both the main inventory slots and the equipment (helmet, chestplate, leggings, boots, and off-hand).
      *
-     * @param neededSpace The minimum number of available spaces required in the player's inventory.
+     * @param spaceRequired The minimum number of available spaces required in the player's inventory.
      * @return true if the player has enough space, false otherwise.
      */
-    public boolean isEnoughSpace(int neededSpace) {
+    public boolean isEnoughSpace(int spaceRequired) {
         int availableSpace = 0;
 
         // Check if the player has space in equipment slots (helmet, chestplate, leggings, boots, and off-hand)
@@ -192,7 +192,7 @@ public class PlayerAPI {
             if (item == null || item.getType() == Material.AIR) {
                 availableSpace++;
             }
-            if (availableSpace >= neededSpace) return true;
+            if (availableSpace >= spaceRequired) return true;
         }
         return false;
     }
