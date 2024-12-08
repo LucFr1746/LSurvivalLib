@@ -1,12 +1,12 @@
 package io.github.lucfr1746.LLib.Inventory;
 
-import io.github.lucfr1746.LLib.LLib;
 import io.github.lucfr1746.LLib.Player.PlayerAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +15,9 @@ public class InventoryManager {
 
     private final Map<Inventory, InventoryHandler> activeInventories = new HashMap<>();
 
-    public void openGUI(InventoryBuilderAPI gui, Player player) {
+    public void openGUI(Plugin plugin, InventoryBuilderAPI gui, Player player) {
         this.registerHandledInventory(gui.getInventory(), gui);
-        new PlayerAPI(player).openInventory(LLib.getInstance(), gui.getInventory());
+        new PlayerAPI(player).openInventory(plugin, gui.getInventory());
     }
 
     public void registerHandledInventory(Inventory inventory, InventoryHandler handler) {
