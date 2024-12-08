@@ -1,5 +1,6 @@
 package io.github.lucfr1746.LLib.Inventory;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -15,16 +16,16 @@ public abstract class InventoryBuilderAPI implements InventoryHandler {
 
     public enum LockMode {
         ALL, // Prevents all interaction
-        GUI_LOCKED   // Prevents interaction with the GUI
+        GUI_LOCKED,   // Prevents interaction with the GUI
+        PLAYER_LOCKED, // Prevents interaction with the player inventory
     }
 
-    private final Inventory inventory;
+    private Inventory inventory;
     private final Map<Integer, InventoryButton> buttonMap = new HashMap<>();
     private LockMode lockMode = LockMode.ALL;
-
-    public InventoryBuilderAPI() {
-        this.inventory = this.createInventory();
-    }
+    private int          rows = 3;
+    private int   currentPage = 1;
+    private String      title = "";
 
     public Inventory getInventory() {
         return this.inventory;
@@ -34,12 +35,42 @@ public abstract class InventoryBuilderAPI implements InventoryHandler {
         this.buttonMap.put(slot, button);
     }
 
+    public Map<Integer, InventoryButton> getButtonMap() {
+        return this.buttonMap;
+    }
+
     public void setLockMode(LockMode lockMode) {
         this.lockMode = lockMode;
     }
 
     public LockMode getLockMode() {
         return this.lockMode;
+    }
+
+    public void setCurrentPage(int page) {
+        this.currentPage = Math.max(1, page);
+    }
+
+    public int getCurrentPage() {
+        return this.currentPage;
+    }
+
+    public void setRows(int rows) {
+        this.rows = Math.min(rows, 6);
+        this.inventory = Bukkit.createInventory(null, rows * 9, getTitle());
+    }
+
+    public int getRows() {
+        return this.rows;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+        this.inventory = Bukkit.createInventory(null, getRows() * 9, title);
+    }
+
+    public String getTitle() {
+        return this.title;
     }
 
     public void decorate(Player player) {
@@ -52,23 +83,25 @@ public abstract class InventoryBuilderAPI implements InventoryHandler {
     @Override
     public void onClick(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
-        event.setCancelled(true);
-        int slot = event.getSlot();
-        InventoryButton button = this.buttonMap.get(slot);
-
         switch (lockMode) {
-            case ALL:
-                event.setCancelled(true);
-                break;
-            case GUI_LOCKED:
+            case GUI_LOCKED -> {
                 if (event.getClickedInventory() instanceof PlayerInventory) {
                     return;
                 }
                 event.setCancelled(true);
-                break;
+            }
+            case PLAYER_LOCKED -> {
+                if (!(event.getClickedInventory() instanceof PlayerInventory)) {
+                    return;
+                }
+                event.setCancelled(true);
+            }
+            default -> event.setCancelled(true);
         }
 
-        if (button != null) {
+        int slot = event.getSlot();
+        InventoryButton button = this.buttonMap.get(slot);
+        if (button != null && button.getEventConsumer() != null) {
             button.getEventConsumer().accept(event);
         }
     }
@@ -81,6 +114,4 @@ public abstract class InventoryBuilderAPI implements InventoryHandler {
     @Override
     public void onClose(InventoryCloseEvent event) {
     }
-
-    protected abstract Inventory createInventory();
 }
