@@ -14,9 +14,11 @@ import java.util.Map;
 public class InventoryManager {
 
     private final Map<Inventory, InventoryHandler> activeInventories = new HashMap<>();
+    private static final Map<Inventory, InventoryBuilderAPI> activeInventoryBuilderAPI = new HashMap<>();
 
     public void openGUI(Plugin plugin, InventoryBuilderAPI gui, Player player) {
         this.registerHandledInventory(gui.getInventory(), gui);
+        this.registerInventoryBuilderAPI(gui.getInventory(), gui);
         new PlayerAPI(player).openInventory(plugin, gui.getInventory());
     }
 
@@ -24,8 +26,20 @@ public class InventoryManager {
         this.activeInventories.put(inventory, handler);
     }
 
+    public void registerInventoryBuilderAPI(Inventory inventory, InventoryBuilderAPI inventoryBuilderAPI) {
+        activeInventoryBuilderAPI.put(inventory, inventoryBuilderAPI);
+    }
+
     public void unregisterInventory(Inventory inventory) {
         this.activeInventories.remove(inventory);
+    }
+
+    public void unregisterInventoryBuilderAPI(Inventory inventory) {
+        activeInventoryBuilderAPI.remove(inventory);
+    }
+
+    public InventoryBuilderAPI getActiveInventoryBuilderAPI(Inventory inventory) {
+        return activeInventoryBuilderAPI.get(inventory);
     }
 
     public void handleClick(InventoryClickEvent event) {
@@ -48,6 +62,7 @@ public class InventoryManager {
         if (handler != null) {
             handler.onClose(event);
             this.unregisterInventory(inventory);
+            this.unregisterInventoryBuilderAPI(inventory);
         }
     }
 }
