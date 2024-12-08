@@ -1,9 +1,6 @@
 package io.github.lucfr1746.LLib.Utils.Metrics;
 
 import io.github.lucfr1746.LLib.LLib;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.plugin.PluginDescriptionFile;
 
 import java.io.IOException;
 import java.io.InputStream;
