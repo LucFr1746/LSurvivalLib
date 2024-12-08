@@ -11,6 +11,7 @@ public class InventoryButton {
 
     private Function<Player, ItemStack> iconCreator;
     private Consumer<InventoryClickEvent> eventConsumer;
+    private String buttonName;
 
     public InventoryButton creator(Function<Player, ItemStack> iconCreator) {
         this.iconCreator = iconCreator;
@@ -22,11 +23,20 @@ public class InventoryButton {
         return this;
     }
 
+    public InventoryButton name(String buttonName) {
+        this.buttonName = buttonName;
+        return this;
+    }
+
     public Consumer<InventoryClickEvent> getEventConsumer() {
         return this.eventConsumer;
     }
 
     public Function<Player, ItemStack> getIconCreator() {
         return this.iconCreator;
+    }
+
+    public String getButtonName() {
+        return this.buttonName;
     }
 }
