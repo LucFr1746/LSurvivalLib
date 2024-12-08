@@ -80,6 +80,12 @@ public abstract class InventoryBuilderAPI implements InventoryHandler {
         });
     }
 
+    public void updateButton(Player player, int slot, InventoryButton button) {
+        this.buttonMap.put(slot, button);
+        ItemStack icon = button.getIconCreator().apply(player);
+        this.inventory.setItem(slot, icon);
+    }
+
     @Override
     public void onClick(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
