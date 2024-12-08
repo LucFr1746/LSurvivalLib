@@ -98,6 +98,11 @@ public class ConfigAPI {
         return YamlConfiguration.loadConfiguration(file);
     }
 
+    public FileConfiguration getOrCreateYamlConfiguration(String path, String filename) {
+        if (!filename.endsWith(".yml")) filename += ".yml";
+        return new File(path, filename).exists() ? getYamlConfiguration(path, filename) : createYamlFileConfiguration(path, filename);
+    }
+
     public File getFile(String path, String filename) throws LException.FileNotFoundException {
         File file = new File(path, filename);
 
