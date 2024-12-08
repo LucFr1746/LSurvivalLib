@@ -180,11 +180,11 @@ public class PlayerAPI {
         int availableSpace = 0;
 
         // Check if the player has space in equipment slots (helmet, chestplate, leggings, boots, and off-hand)
-        if (this.player.getInventory().getHelmet() == null) availableSpace++;
-        if (this.player.getInventory().getChestplate() == null) availableSpace++;
-        if (this.player.getInventory().getLeggings() == null) availableSpace++;
-        if (this.player.getInventory().getBoots() == null) availableSpace++;
-        if (this.player.getInventory().getItemInOffHand().getType() == Material.AIR) availableSpace++;
+        if (this.player.getInventory().getHelmet() == null) availableSpace--;
+        if (this.player.getInventory().getChestplate() == null) availableSpace--;
+        if (this.player.getInventory().getLeggings() == null) availableSpace--;
+        if (this.player.getInventory().getBoots() == null) availableSpace--;
+        if (this.player.getInventory().getItemInOffHand().getType() == Material.AIR) availableSpace--;
 
         // Check available space in the main inventory (excludes armor and off-hand)
         for (int i = 0; i < this.player.getInventory().getSize(); i++) {
@@ -196,5 +196,4 @@ public class PlayerAPI {
         }
         return false;
     }
-
 }
