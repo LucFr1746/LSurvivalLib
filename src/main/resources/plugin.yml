@@ -1,8 +1,10 @@
-name: LLib
-version: '1.0-SNAPSHOT'
-main: io.github.lucfr1746.LLib.LLib
+name: LSurvivalLib
+version: '1.0.0'
+main: io.github.lucfr1746.LSurvivalLib.LSurvivalLib
 api-version: '1.21'
-
+prefix: "LLib"
 load: STARTUP
+authors: [LucFr1746]
+website: https://github.com/LucFr1746
 
 softdepend: [PlaceholderAPI]
