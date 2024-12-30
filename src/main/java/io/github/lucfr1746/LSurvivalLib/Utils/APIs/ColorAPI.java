@@ -3,6 +3,48 @@ package io.github.lucfr1746.LSurvivalLib.Utils.APIs;
 import org.bukkit.Color;
 
 public class ColorAPI {
+
+    public enum BukkitColor {
+        BLACK(0,0,0),
+        DARK_BLUE(0,0,170),
+        DARK_GREEN(0,170,0),
+        DARK_AQUA(0,170,170),
+        DARK_RED(170,0,0),
+        DARK_PURPLE(170,0,170),
+        GOLD(255,170,0),
+        GRAY(170,170,170),
+        DARK_GRAY(85,85,85),
+        BLUE(85,85,255),
+        GREEN(85,255,85),
+        AQUA(85,255,255),
+        RED(255,85,85),
+        LIGHT_PURPLE(255,85,255),
+        YELLOW(255,255,0),
+        WHITE(255,255,255);
+
+        private final int red;
+        private final int green;
+        private final int blue;
+
+        BukkitColor(int red, int green, int blue) {
+            this.red = red;
+            this.green = green;
+            this.blue = blue;
+        }
+
+        public int getRed() {
+            return red;
+        }
+
+        public int getGreen() {
+            return green;
+        }
+
+        public int getBlue() {
+            return blue;
+        }
+    }
+
     /**
      * Converts a {@link Color} object to a hexadecimal color string.
      *
@@ -11,6 +53,7 @@ public class ColorAPI {
      *         (e.g., "#FF5733" for an RGB color with red=255, green=87, blue=51)
      */
     public static String colorToHex(Color color) {
+        if (color == null) return null;
         int r = color.getRed();
         int g = color.getGreen();
         int b = color.getBlue();

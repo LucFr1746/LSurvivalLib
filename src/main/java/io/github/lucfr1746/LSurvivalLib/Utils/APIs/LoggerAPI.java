@@ -2,14 +2,21 @@ package io.github.lucfr1746.LSurvivalLib.Utils.APIs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.Plugin;
 
 public class LoggerAPI {
 
-    private JavaPlugin plugin;
+    private Plugin plugin;
 
-    public LoggerAPI(JavaPlugin plugin) {
+    public LoggerAPI(Plugin plugin) {
         this.plugin = plugin;
+    }
+
+    public LoggerAPI(String pluginName) {
+        this.plugin = Bukkit.getPluginManager().getPlugin(pluginName);
+        if (this.plugin == null) {
+            throw new IllegalArgumentException("Plugin '" + pluginName + "' not found");
+        }
     }
 
     public void info(String message) {

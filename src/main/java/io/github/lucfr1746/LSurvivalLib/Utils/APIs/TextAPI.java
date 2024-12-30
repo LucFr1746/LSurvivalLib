@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TextAPI {
 
@@ -87,6 +89,7 @@ public class TextAPI {
 
     public TextAPI colorRecognise() {
         altColorRecognise();
+        autoDetectARGBColor();
         gradientRecognise();
         hexRecognise();
         return this;
@@ -189,16 +192,39 @@ public class TextAPI {
         return this;
     }
 
-    private TextAPI setPlaceholderOfOnlinePlayer() {
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
-            this.text = PlaceholderAPI.setPlaceholders(this.player, this.text);
+    public TextAPI autoDetectARGBColor() {
+        if (this.text.contains("Color:[argb0x")) {
+            Pattern pattern = Pattern.compile("Color:\\[argb0x([0-9a-fA-F]{8})\\](.*?)"); // Match ARGB and following text
+            Matcher matcher = pattern.matcher(this.text);
+            StringBuilder formattedText = new StringBuilder();
+
+            while (matcher.find()) {
+                String argb = matcher.group(1); // Extract ARGB code
+                String followingText = matcher.group(2); // Extract text after the color code
+                String hexColor = "#" + argb.substring(2); // Convert ARGB to hex color (remove alpha)
+
+                try {
+                    // Replace matched ARGB code with formatted text
+                    matcher.appendReplacement(formattedText, ChatColor.of(hexColor) + Matcher.quoteReplacement(followingText));
+                } catch (IllegalArgumentException e) {
+                    // If the color conversion fails, keep the original text
+                    matcher.appendReplacement(formattedText, Matcher.quoteReplacement("Color:[argb0x" + argb + "]" + followingText));
+                }
+            }
+            matcher.appendTail(formattedText);
+            this.text = formattedText.toString();
+        }
         return this;
     }
 
-    private TextAPI setPlaceholderOfOfflinePlayer() {
+    private void setPlaceholderOfOnlinePlayer() {
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+            this.text = PlaceholderAPI.setPlaceholders(this.player, this.text);
+    }
+
+    private void setPlaceholderOfOfflinePlayer() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             this.text = PlaceholderAPI.setPlaceholders(this.offlinePlayer, this.text);
-        return this;
     }
 
     public TextAPI convertToEnumStringFormat() {
