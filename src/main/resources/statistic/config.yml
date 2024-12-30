@@ -1,0 +1,116 @@
+#-------------------------------------------#
+#              Stats Action Bar             #
+#-------------------------------------------#
+
+#lstats_<stat> -> return current value of player
+#lstats_<stat>_max -> return current max value of player
+#lstats_<stat>_name -> return <stat> name
+#lstats_<stat>_color -> return <stat> color
+#lstats_<stat>_symbol -> return <stat> symbol
+#lstats_<stat>_value_base -> return <stat> base-value
+#lstats_<stat>_value_max -> return <stat> max-value
+
+#lstats_<stat>_fixed_<take> -> return fixed current value of player
+#lstats_<stat>_fixed_<take>_max -> return fixed current max value of player
+#lstats_<stat>_fixed_<take>_value_base -> return <stat> fixed base-value
+#lstats_<stat>_fixed_<take>_value_max -> return <stat> fixed max-value
+
+action-bar:
+  player-stats-overlay:
+    enabled: true
+    priority: 1
+    message: "<color:%lstats_health_color%>%lstats_health_fixed_0%/%lstats_health_fixed_0_max%%lstats_health_symbol%</color>     <color:%lstats_defense_color%>%lstats_defense_fixed_0%%lstats_defense_symbol% %lstats_defense_name%</color>     <color:%lstats_intelligence_color%>%lstats_mana_fixed_0%/%lstats_mana_fixed_0_max%%lstats_intelligence_symbol%</color>"
+
+statistic:
+#-------------------------------------------#
+#                Combat Stats               #
+#-------------------------------------------#
+  combat-stats:
+    health:
+      name: "Health"
+      color: "#FF5555"
+      base-value: 100
+      max-value: -1
+    defense:
+      name: "Defense"
+      color: "#55FF55"
+      base-value: 0
+      max-value: -1
+    strength:
+      name: "Strength"
+      color: "#FF5555"
+      base-value: 0
+      max-value: -1
+    intelligence:
+      name: "Intelligence"
+      color: "#55FFFF"
+      base-value: 0
+      max-value: -1
+    crit-chance:
+      name: "Crit Chance"
+      color: "#5555FF"
+      base-value: 30
+      max-value: -1
+    crit-damage:
+      name: "Crit Damage"
+      color: "#5555FF"
+      base-value: 50
+      max-value: -1
+    bonus-attack-speed:
+      name: "Bonus Attack Speed"
+      color: "#FFFF55"
+      base-value: 0
+      max-value: 100
+    true-defense:
+      name: "True Defense"
+      color: "#FFFFFF"
+      base-value: 0
+      max-value: -1
+    ferocity:
+      name: "Ferocity"
+      color: "#FF5555"
+      base-value: 0
+      max-value: -1
+    health-regen:
+      name: "Health Regen"
+      color: "#FF5555"
+      base-value: 100
+      max-value: -1
+    vitality:
+      name: "Vitality"
+      color: "#AA0000"
+      base-value: 100
+      max-value: -1
+    swing-range:
+      name: "Swing Range"
+      color: "#FFFF55"
+      base-value: 3
+      max-value: 15
+#-------------------------------------------#
+#                 Misc Stats                #
+#-------------------------------------------#
+  misc-stats:
+    speed:
+      name: "Speed"
+      color: "#FFFFFF"
+      base-value: 100
+      max-value: 500
+#-------------------------------------------#
+#                Other Stats                #
+#-------------------------------------------#
+  other-stats:
+    absorption:
+      name: "Absorption"
+      color: "#FFAA00"
+      base-value: 0
+      max-value: -1
+    damage:
+      name: "Damage"
+      color: "#FF5555"
+      base-value: 5
+      max-value: -1
+    true-damage:
+      name: "True Damage"
+      color: "#FFFFFF"
+      base-value: 0
+      max-value: -1
