@@ -7,4 +7,5 @@ load: STARTUP
 authors: [LucFr1746]
 website: https://github.com/LucFr1746
 
+depend: [Adventure]
 softdepend: [PlaceholderAPI]
