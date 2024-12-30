@@ -1,13 +1,13 @@
-package io.github.lucfr1746.LSurvivalLib.Entity.Events.ArmorChangeEvent;
+package io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent;
 
-import io.github.lucfr1746.LSurvivalLib.Entity.Events.ArmorChangeEvent.Listener.ArmorEvent;
+import io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent.Listener.ArmorChangeEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class ArmorUnequipEvent extends ArmorEvent {
+public class ArmorUnequipEvent extends ArmorChangeEvent {
 
     private static final HandlerList HANDLERS = new HandlerList();
 

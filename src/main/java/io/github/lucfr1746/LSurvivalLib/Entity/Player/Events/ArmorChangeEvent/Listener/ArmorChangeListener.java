@@ -1,7 +1,7 @@
-package io.github.lucfr1746.LSurvivalLib.Entity.Events.ArmorChangeEvent.Listener;
+package io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent.Listener;
 
-import io.github.lucfr1746.LSurvivalLib.Entity.Events.ArmorChangeEvent.ArmorEquipEvent;
-import io.github.lucfr1746.LSurvivalLib.Entity.Events.ArmorChangeEvent.ArmorUnequipEvent;
+import io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent.ArmorEquipEvent;
+import io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent.ArmorUnequipEvent;
 import io.github.lucfr1746.LSurvivalLib.LSurvivalLib;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,22 +20,22 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
-public class ArmorListener implements Listener {
+public class ArmorChangeListener implements Listener {
 
     private final LSurvivalLib plugin;
 
-    public ArmorListener(LSurvivalLib plugin) {
+    public ArmorChangeListener(LSurvivalLib plugin) {
         this.plugin = plugin;
         this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
-    private ArmorEquipEvent callEquip(Player entity, ItemStack item, EquipmentSlot slot, ArmorEvent.ArmorAction action) {
+    private ArmorEquipEvent callEquip(Player entity, ItemStack item, EquipmentSlot slot, ArmorChangeEvent.ArmorAction action) {
         ArmorEquipEvent event = new ArmorEquipEvent(entity, item, slot, action);
         Bukkit.getPluginManager().callEvent(event);
         return event;
     }
 
-    private ArmorUnequipEvent callUnequip(Player entity, ItemStack item, EquipmentSlot slot, ArmorEvent.ArmorAction action) {
+    private ArmorUnequipEvent callUnequip(Player entity, ItemStack item, EquipmentSlot slot, ArmorChangeEvent.ArmorAction action) {
         ArmorUnequipEvent event = new ArmorUnequipEvent(entity, item, slot, action);
         Bukkit.getPluginManager().callEvent(event);
         return event;
@@ -60,7 +60,7 @@ public class ArmorListener implements Listener {
             if (rawSlot - 10 + equipmentSlot.ordinal() == 0) {
                 // We use 'getView()' instead of 'getInventory()' because it's returning the inventory before the drag.
                 if (Objects.requireNonNull(e.getView().getItem(rawSlot)).getType().isAir()) {
-                    callEquip((Player)e.getWhoClicked(), e.getOldCursor(), equipmentSlot, ArmorEvent.ArmorAction.DRAG).updateCancellable(e);
+                    callEquip((Player)e.getWhoClicked(), e.getOldCursor(), equipmentSlot, ArmorChangeEvent.ArmorAction.DRAG).updateCancellable(e);
                     break;
                 }
             }
@@ -101,11 +101,11 @@ public class ArmorListener implements Listener {
                 if (holding.isSimilar(armor[i])) {
                     if (collectedAmount + armor[i].getAmount() > holding.getMaxStackSize()) return;
 
-                    ArmorEvent armorEvent = callUnequip(p, armor[i].clone(), EquipmentSlot.values()[i + 2], ArmorEvent.ArmorAction.DOUBLE_CLICK);
+                    ArmorChangeEvent armorChangeEvent = callUnequip(p, armor[i].clone(), EquipmentSlot.values()[i + 2], ArmorChangeEvent.ArmorAction.DOUBLE_CLICK);
                     // Only cancel the armor to collect.
-                    if (armorEvent.isCancelled()) {
-                        holding.setAmount(holding.getAmount() - armorEvent.getItemStack().getAmount());
-                        Bukkit.getScheduler().runTask(this.plugin, () -> p.getInventory().setItem(armorEvent.getArmorSlot(), armorEvent.getItemStack()));
+                    if (armorChangeEvent.isCancelled()) {
+                        holding.setAmount(holding.getAmount() - armorChangeEvent.getItemStack().getAmount());
+                        Bukkit.getScheduler().runTask(this.plugin, () -> p.getInventory().setItem(armorChangeEvent.getArmorSlot(), armorChangeEvent.getItemStack()));
                     } else {
                         collectedAmount += armor[i].getAmount();
                     }
@@ -121,11 +121,11 @@ public class ArmorListener implements Listener {
 
                 // If the armor equipment slot is empty, then we can equip the clicked item.
                 if (p.getInventory().getItem(clickedEquipment) == null) {
-                    ArmorEvent armorEvent = callEquip(p, clicked, clickedEquipment, ArmorEvent.ArmorAction.SHIFT_CLICK);
+                    ArmorChangeEvent armorChangeEvent = callEquip(p, clicked, clickedEquipment, ArmorChangeEvent.ArmorAction.SHIFT_CLICK);
                     // Move clicked item to another inventory when canceled.
-                    if (armorEvent.isCancelled()) {
-                        p.getInventory().setItem(armorEvent.getArmorSlot(), armorEvent.getItemStack());
-                        Bukkit.getScheduler().runTask(this.plugin, () -> p.getInventory().setItem(armorEvent.getArmorSlot(), null));
+                    if (armorChangeEvent.isCancelled()) {
+                        p.getInventory().setItem(armorChangeEvent.getArmorSlot(), armorChangeEvent.getItemStack());
+                        Bukkit.getScheduler().runTask(this.plugin, () -> p.getInventory().setItem(armorChangeEvent.getArmorSlot(), null));
                     }
                 }
             }
@@ -136,7 +136,7 @@ public class ArmorListener implements Listener {
                 if (e.isShiftClick()) {
                     // If an empty slot is found, we can unequip the item.
                     if (p.getInventory().firstEmpty() != -1) {
-                        callUnequip(p, clicked, armorSlot, ArmorEvent.ArmorAction.SHIFT_CLICK).updateCancellable(e);
+                        callUnequip(p, clicked, armorSlot, ArmorChangeEvent.ArmorAction.SHIFT_CLICK).updateCancellable(e);
                         return;
                     }
 
@@ -153,7 +153,7 @@ public class ArmorListener implements Listener {
                         // And if the amount of the equipped (clicked) plus the amount of the item in the inventory
                         // is not above the max stack size, we can FULLY unequipped it.
                         if (clicked.getAmount() + item.getAmount() <= clicked.getMaxStackSize()) {
-                            callUnequip(p, clicked, armorSlot, ArmorEvent.ArmorAction.SHIFT_CLICK).updateCancellable(e);
+                            callUnequip(p, clicked, armorSlot, ArmorChangeEvent.ArmorAction.SHIFT_CLICK).updateCancellable(e);
                             break;
                         }
                     }
@@ -167,10 +167,10 @@ public class ArmorListener implements Listener {
                         if (e.getClick() == ClickType.CREATIVE && (holding.getAmount() > 1 || (clicked.getAmount() == 2 && holding.isSimilar(clicked)))) return;
                         else if (holding.getType().isAir() && e.isRightClick()) return;
                     }
-                    callUnequip(p, clicked, armorSlot, ArmorEvent.ArmorAction.CLICK).updateCancellable(e);
+                    callUnequip(p, clicked, armorSlot, ArmorChangeEvent.ArmorAction.CLICK).updateCancellable(e);
                 }
                 if (holdingEquipment == armorSlot) {
-                    callEquip(p, holding, armorSlot, ArmorEvent.ArmorAction.CLICK).updateCancellable(e);
+                    callEquip(p, holding, armorSlot, ArmorChangeEvent.ArmorAction.CLICK).updateCancellable(e);
                 }
 
             } else if (e.getAction() == InventoryAction.HOTBAR_SWAP) {
@@ -183,20 +183,20 @@ public class ArmorListener implements Listener {
                 }
 
                 if (!clicked.getType().isAir()) {
-                    callUnequip(p, clicked, armorSlot, ArmorEvent.ArmorAction.HOTBAR_SWAP).updateCancellable(e);
+                    callUnequip(p, clicked, armorSlot, ArmorChangeEvent.ArmorAction.HOTBAR_SWAP).updateCancellable(e);
                 }
                 if (item != null) {
                     if (item.getType().getEquipmentSlot() == armorSlot) {
-                        callEquip(p, item, armorSlot, ArmorEvent.ArmorAction.HOTBAR_SWAP).updateCancellable(e);
+                        callEquip(p, item, armorSlot, ArmorChangeEvent.ArmorAction.HOTBAR_SWAP).updateCancellable(e);
                     }
                 }
             } else if (holding.getType().isAir()) {
                 if (e.getClick() == ClickType.DROP) {
                     if (clicked.getAmount() == 1) {
-                        callUnequip(p, clicked, armorSlot, ArmorEvent.ArmorAction.DROP).updateCancellable(e);
+                        callUnequip(p, clicked, armorSlot, ArmorChangeEvent.ArmorAction.DROP).updateCancellable(e);
                     }
                 } else if (e.getClick() == ClickType.CONTROL_DROP) {
-                    callUnequip(p, clicked, armorSlot, ArmorEvent.ArmorAction.DROP).updateCancellable(e);
+                    callUnequip(p, clicked, armorSlot, ArmorChangeEvent.ArmorAction.DROP).updateCancellable(e);
                 }
             }
         }
@@ -216,11 +216,11 @@ public class ArmorListener implements Listener {
 
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             if (p.getInventory().getItem(equipmentSlot) != null) {
-                ArmorEvent armorEvent = callEquip(p, useItem, equipmentSlot, ArmorEvent.ArmorAction.HOTBAR);
+                ArmorChangeEvent armorChangeEvent = callEquip(p, useItem, equipmentSlot, ArmorChangeEvent.ArmorAction.HOTBAR);
                 // When canceled unequip item in armor slot and put it back in the hand of the player.
-                if (armorEvent.isCancelled()) {
-                    p.getInventory().setItem(armorEvent.getArmorSlot(), null);
-                    p.getInventory().setItem(Objects.requireNonNull(e.getHand()), armorEvent.getItemStack());
+                if (armorChangeEvent.isCancelled()) {
+                    p.getInventory().setItem(armorChangeEvent.getArmorSlot(), null);
+                    p.getInventory().setItem(Objects.requireNonNull(e.getHand()), armorChangeEvent.getItemStack());
                 }
             }
         });
@@ -230,7 +230,7 @@ public class ArmorListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     private void onBlockDispenseArmor(BlockDispenseArmorEvent e) {
         if (e.getTargetEntity() instanceof Player) {
-            callEquip((Player)e.getTargetEntity(), e.getItem(), e.getItem().getType().getEquipmentSlot(), ArmorEvent.ArmorAction.DISPENSED).updateCancellable(e);
+            callEquip((Player)e.getTargetEntity(), e.getItem(), e.getItem().getType().getEquipmentSlot(), ArmorChangeEvent.ArmorAction.DISPENSED).updateCancellable(e);
         }
     }
 
@@ -239,7 +239,7 @@ public class ArmorListener implements Listener {
         final ItemStack item = e.getBrokenItem();
         if (item.getType().getEquipmentSlot().ordinal() < 2 || item.getAmount() > 1) return;
 
-        callUnequip(e.getPlayer(), item, item.getType().getEquipmentSlot(), ArmorEvent.ArmorAction.BROKE);
+        callUnequip(e.getPlayer(), item, item.getType().getEquipmentSlot(), ArmorChangeEvent.ArmorAction.BROKE);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -250,7 +250,7 @@ public class ArmorListener implements Listener {
         final ItemStack[] armor = p.getInventory().getArmorContents();
         for (int i = 0; i < armor.length; i++) {
             if (armor[i] == null) continue;
-            callUnequip(p, armor[i], EquipmentSlot.values()[i + 2], ArmorEvent.ArmorAction.DEATH);
+            callUnequip(p, armor[i], EquipmentSlot.values()[i + 2], ArmorChangeEvent.ArmorAction.DEATH);
         }
     }
 }

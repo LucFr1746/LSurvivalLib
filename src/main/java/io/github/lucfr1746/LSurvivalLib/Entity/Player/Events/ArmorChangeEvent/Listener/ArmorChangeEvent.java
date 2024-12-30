@@ -1,4 +1,4 @@
-package io.github.lucfr1746.LSurvivalLib.Entity.Events.ArmorChangeEvent.Listener;
+package io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent.Listener;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -7,7 +7,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class ArmorEvent extends Event implements Cancellable {
+public abstract class ArmorChangeEvent extends Event implements Cancellable {
 
     private Result result = Result.DEFAULT;
 
@@ -16,8 +16,8 @@ public abstract class ArmorEvent extends Event implements Cancellable {
     private final Player who;
     private final ArmorAction action;
 
-    public ArmorEvent(@NotNull final Player who, @NotNull final ItemStack item,
-                      @NotNull final EquipmentSlot slot, @NotNull final ArmorAction action) {
+    public ArmorChangeEvent(@NotNull final Player who, @NotNull final ItemStack item,
+                            @NotNull final EquipmentSlot slot, @NotNull final ArmorAction action) {
         this.who = who;
         this.item = item;
         this.slot = slot;
