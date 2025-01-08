@@ -1,60 +1,60 @@
 package io.github.lucfr1746.LSurvivalLib.ItemStack.Category;
 
 public enum Category {
-    HELMET("HELMET","&8This item can be reforged!"),
-    CHESTPLATE("CHESTPLATE","&8This item can be reforged!"),
-    LEGGINGS("LEGGINGS","&8This item can be reforged!"),
-    BOOTS("BOOTS","&8This item can be reforged!"),
+    HELMET("HELMET",true),
+    CHESTPLATE("CHESTPLATE",true),
+    LEGGINGS("LEGGINGS",true),
+    BOOTS("BOOTS",true),
 
-    NECKLACE("NECKLACE","&8This item can be reforged!"),
-    CLOAK("CLOAK","&8This item can be reforged!"),
-    BELT("BELT","&8This item can be reforged!"),
-    BRACELET("BRACELET","&8This item can be reforged!"),
-    GLOVES("GLOVES","&8This item can be reforged!"),
+    NECKLACE("NECKLACE",true),
+    CLOAK("CLOAK",true),
+    BELT("BELT",true),
+    BRACELET("BRACELET",true),
+    GLOVES("GLOVES",true),
 
-    SWORD("SWORD","&8This item can be reforged!"),
-    LONG_SWORD("LONGSWORD","&8This item can be reforged!"),
-    BOW("BOW","&8This item can be reforged!"),
-    CROSS_BOW("CROSS BOW","&8This item can be reforged!"),
-    TRIDENT("TRIDENT","&8This item can be reforged!"),
-    MACE("MACE","&8This item can be reforged!"),
-    SHIELD("SHIELD","&8This item can be reforged!"),
+    SWORD("SWORD",true),
+    LONG_SWORD("LONGSWORD",true),
+    BOW("BOW",true),
+    CROSS_BOW("CROSS BOW",true),
+    TRIDENT("TRIDENT",true),
+    MACE("MACE",true),
+    SHIELD("SHIELD",true),
 
-    AXE("AXE","&8This item can be reforged!"),
-    PICKAXE("PICKAXE","&8This item can be reforged!"),
-    HOE("HOE","&8This item can be reforged!"),
-    SHOVEL("SHOVEL",""),
-    SHEARS("SHEARS",""),
-    FISHING_ROD("FISHING ROD","&8This item can be reforged!"),
+    AXE("AXE",true),
+    PICKAXE("PICKAXE",true),
+    HOE("HOE",true),
+    SHOVEL("SHOVEL",false),
+    SHEARS("SHEARS",false),
+    FISHING_ROD("FISHING ROD",true),
 
-    REFORGE_STONE("REFORGE STONE",""),
-    POWER_STONE("POWER STONE",""),
-    ACCESSORY("ACCESSORY",""),
-    COSMETIC("COSMETIC",""),
-    MEMENTO("MEMENTO",""),
-    BAIT("BAIT",""),
-    FISHING_WEAPON("FISHING WEAPON","&8This item can be reforged!"),
-    PET_ITEM("PET ITEM",""),
-    PORTAL("PORTAL",""),
-    ITEM("ITEM", ""),
-    ARROW("ARROW", ""),
+    REFORGE_STONE("REFORGE STONE",false),
+    POWER_STONE("POWER STONE",false),
+    ACCESSORY("ACCESSORY",false),
+    COSMETIC("COSMETIC",false),
+    MEMENTO("MEMENTO",false),
+    BAIT("BAIT",false),
+    FISHING_WEAPON("FISHING WEAPON",true),
+    PET_ITEM("PET ITEM",false),
+    PORTAL("PORTAL",false),
+    ITEM("ITEM", false),
+    ARROW("ARROW", false),
 
-    NONE("",""),
-    UNCLASSIFIED("","");
+    NONE("",false),
+    UNCLASSIFIED("",false);
 
     private final String nameHolder;
-    private final String description;
+    private final boolean canBeReforged;
 
     public String getNameHolder() {
         return nameHolder;
     }
 
-    public String getDescription() {
-        return description;
+    public boolean canBeReforged() {
+        return canBeReforged;
     }
 
-    Category(String nameHolder, String description) {
+    Category(String nameHolder, boolean canBeReforged) {
         this.nameHolder = nameHolder;
-        this.description = description;
+        this.canBeReforged = canBeReforged;
     }
 }

@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CategoryAPI {
     }
 
     public CategoryAPI setCategory(@NotNull Category category) {
-        if (this.itemStack.getType() == Material.AIR) return this;
+        if (isInvalidItem()) return this;
         NBT.modify(this.itemStack, nbt -> {
             nbt.getOrCreateCompound("ExtraAttributes").setString("category", category.name());
         });
@@ -26,7 +27,7 @@ public class CategoryAPI {
     }
 
     public Category getCategory() {
-        if (this.itemStack.getType() == Material.AIR) return Category.UNCLASSIFIED;
+        if (isInvalidItem()) return Category.UNCLASSIFIED;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes");
             if (!nbtList.hasTag("category")) {
@@ -41,6 +42,7 @@ public class CategoryAPI {
     }
 
     public Category getMaterialCategory() {
+        if (isInvalidItem()) return Category.UNCLASSIFIED;
         String[] types = this.itemStack.getType().toString().split("_");
         String typeSuffix = types[types.length - 1];
         return Arrays.stream(Category.values())
@@ -50,6 +52,7 @@ public class CategoryAPI {
     }
 
     public List<Category> getNearCategoriesCircle() {
+        if (isInvalidItem()) return new ArrayList<>();
         Category currentCategory = getCategory();
 
         if (currentCategory == Category.UNCLASSIFIED) {
@@ -91,5 +94,9 @@ public class CategoryAPI {
         if (itemType.endsWith("LEGGINGS")) return "LEGGINGS";
         if (itemType.endsWith("HELMET") || this.itemStack.getType().getMaxDurability() == 0) return "HELMET";
         return "";
+    }
+
+    private boolean isInvalidItem() {
+        return this.itemStack.getType() == Material.AIR;
     }
 }

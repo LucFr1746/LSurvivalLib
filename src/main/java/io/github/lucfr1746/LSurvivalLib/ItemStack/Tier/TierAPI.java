@@ -20,7 +20,7 @@ public class TierAPI {
     }
 
     public TierAPI setTier(@NotNull Tier tier) {
-        if (this.itemStack.getType() == Material.AIR) return this;
+        if (isInvalidItem()) return this;
         NBT.modify(itemStack, nbt -> {
             nbt.getOrCreateCompound("ExtraAttributes").setString("tier", tier.toString());
         });
@@ -28,6 +28,7 @@ public class TierAPI {
     }
 
     public Tier getTier() {
+        if (isInvalidItem()) return Tier.COMMON;
         return NBT.modify(itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes");
             if (!nbtList.hasTag("tier")) {
@@ -42,6 +43,7 @@ public class TierAPI {
     }
 
     public List<Tier> getNearTiersCircle() {
+        if (isInvalidItem()) return new ArrayList<>();
         List<Tier> result = new ArrayList<>();
 
         Tier frontTier;
@@ -57,5 +59,9 @@ public class TierAPI {
         result.add(backTier);
 
         return result;
+    }
+
+    private boolean isInvalidItem() {
+        return this.itemStack == null || this.itemStack.getType() == Material.AIR;
     }
 }
