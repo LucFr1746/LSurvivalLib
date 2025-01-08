@@ -1,10 +1,7 @@
 package io.github.lucfr1746.LSurvivalLib.Entity.Player;
 
 import io.github.lucfr1746.LSurvivalLib.Utils.APIs.TextAPI;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -33,7 +30,8 @@ public class PlayerAPI {
     }
 
     public void addItem(ItemStack itemStack) {
-        this.player.getInventory().addItem(itemStack);
+        if (isEnoughSpace(1)) this.player.getInventory().addItem(itemStack);
+        else this.player.getWorld().dropItemNaturally(this.player.getLocation(), itemStack);
     }
 
     public PlayerAPI sendColoredMessage(String message) {
@@ -78,6 +76,21 @@ public class PlayerAPI {
 
     public PlayerAPI playSoundAtPlayerLoc(Sound sound) {
         this.player.playSound(this.player.getLocation(), sound, 1f, 1f);
+        return this;
+    }
+
+    public PlayerAPI playSoundAtPlayerLoc(Sound sound, float volume) {
+        this.player.playSound(this.player.getLocation(), sound, volume, 1f);
+        return this;
+    }
+
+    public PlayerAPI playSoundAtPlayerLoc(Sound sound, float volume, float pitch) {
+        this.player.playSound(this.player.getLocation(), sound, volume, pitch);
+        return this;
+    }
+
+    public PlayerAPI playSound(Location location, Sound sound, float volume, float pitch) {
+        this.player.playSound(location, sound, volume, pitch);
         return this;
     }
 

@@ -124,6 +124,8 @@ public class StatisticCommands {
     private String[] getAllStatNames() {
         return Stream.of(
                         Statistic.CombatStats.values(),
+                        Statistic.GatheringStats.values(),
+                        Statistic.WisdomStats.values(),
                         Statistic.MiscStats.values(),
                         Statistic.OtherStats.values()
                 ).flatMap(Arrays::stream)
@@ -153,11 +155,28 @@ class StatHandler {
             case "CRIT_DAMAGE" -> new StatHandler(0, Statistic.CombatStats.CRIT_DAMAGE.getMaxValue(), PlayerStatistic::setCritDamage);
             case "BONUS_ATTACK_SPEED" -> new StatHandler(0, Statistic.CombatStats.BONUS_ATTACK_SPEED.getMaxValue(), PlayerStatistic::setBonusAttackSpeed);
             case "TRUE_DEFENSE" -> new StatHandler(0, Statistic.CombatStats.TRUE_DEFENSE.getMaxValue(), PlayerStatistic::setTrueDefense);
+            case "FEROCITY" -> new StatHandler(0, Statistic.CombatStats.FEROCITY.getMaxValue(), PlayerStatistic::setFerocity);
             case "HEALTH_REGEN" -> new StatHandler(0, Statistic.CombatStats.HEALTH_REGEN.getMaxValue(), PlayerStatistic::setHealthRegen);
             case "VITALITY" -> new StatHandler(0, Statistic.CombatStats.VITALITY.getMaxValue(), PlayerStatistic::setVitality);
             case "SWING_RANGE" -> new StatHandler(0, Statistic.CombatStats.SWING_RANGE.getMaxValue(), PlayerStatistic::setSwingRange);
 
+            case "MINING_SPEED" -> new StatHandler(0, Statistic.GatheringStats.MINING_SPEED.getMaxValue(), PlayerStatistic::setMiningSpeed);
+            case "MINING_FORTUNE" -> new StatHandler(0, Statistic.GatheringStats.MINING_FORTUNE.getMaxValue(), PlayerStatistic::setMiningFortune);
+            case "MINING_SPREAD" -> new StatHandler(0, Statistic.GatheringStats.MINING_SPREAD.getMaxValue(), PlayerStatistic::setMiningSpread);
+            case "FARMING_FORTUNE" -> new StatHandler(0, Statistic.GatheringStats.FARMING_FORTUNE.getMaxValue(), PlayerStatistic::setFarmingFortune);
+            case "FORAGING_FORTUNE" -> new StatHandler(0, Statistic.GatheringStats.FORAGING_FORTUNE.getMaxValue(), PlayerStatistic::setForagingFortune);
+
+            case "ALCHEMY_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.ALCHEMY_WISDOM.getMaxValue(), PlayerStatistic::setAlchemyWisdom);
+            case "CARPENTRY_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.CARPENTRY_WISDOM.getMaxValue(), PlayerStatistic::setCarpentryWisdom);
+            case "COMBAT_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.COMBAT_WISDOM.getMaxValue(), PlayerStatistic::setCombatWisdom);
+            case "ENCHANTING_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.ENCHANTING_WISDOM.getMaxValue(), PlayerStatistic::setEnchantingWisdom);
+            case "FARMING_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.FARMING_WISDOM.getMaxValue(), PlayerStatistic::setFarmingWisdom);
+            case "FISHING_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.FISHING_WISDOM.getMaxValue(), PlayerStatistic::setFishingWisdom);
+            case "FORAGING_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.FORAGING_WISDOM.getMaxValue(), PlayerStatistic::setForagingWisdom);
+            case "MINING_WISDOM" -> new StatHandler(0, Statistic.WisdomStats.MINING_WISDOM.getMaxValue(), PlayerStatistic::setMiningWisdom);
+
             case "SPEED" -> new StatHandler(0, Statistic.MiscStats.SPEED.getMaxValue(), PlayerStatistic::setSpeed);
+            case "MAGIC_FIND" -> new StatHandler(0, Statistic.MiscStats.MAGIC_FIND.getMaxValue(), PlayerStatistic::setMagicFind);
 
             case "ABSORPTION" -> new StatHandler(0, Statistic.OtherStats.ABSORPTION.getMaxValue(), PlayerStatistic::setAbsorption);
             case "DAMAGE" -> new StatHandler(0, Statistic.OtherStats.DAMAGE.getMaxValue(), PlayerStatistic::setDamage);

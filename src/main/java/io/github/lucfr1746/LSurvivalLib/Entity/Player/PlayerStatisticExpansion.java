@@ -3,7 +3,6 @@ package io.github.lucfr1746.LSurvivalLib.Entity.Player;
 import io.github.lucfr1746.LSurvivalLib.Entity.Statistic;
 import io.github.lucfr1746.LSurvivalLib.LSurvivalLib;
 import io.github.lucfr1746.LSurvivalLib.Utils.APIs.ColorAPI;
-import io.github.lucfr1746.LSurvivalLib.Utils.APIs.LoggerAPI;
 import io.github.lucfr1746.LSurvivalLib.Utils.APIs.NumberAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.Color;

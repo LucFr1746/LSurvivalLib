@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class PlayerActionBarManager {
+class PlayerActionBarManager {
 
     private final LSurvivalLib plugin;
 

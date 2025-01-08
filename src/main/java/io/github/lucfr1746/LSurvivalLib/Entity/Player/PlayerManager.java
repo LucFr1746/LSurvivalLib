@@ -1,6 +1,7 @@
 package io.github.lucfr1746.LSurvivalLib.Entity.Player;
 
 import io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.ArmorChangeEvent.Listener.ArmorChangeListener;
+import io.github.lucfr1746.LSurvivalLib.Entity.Player.Events.PlayerDamageEvent.Listener.DamagesRegister;
 import io.github.lucfr1746.LSurvivalLib.Entity.Statistic;
 import io.github.lucfr1746.LSurvivalLib.LSurvivalLib;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -26,6 +27,7 @@ public class PlayerManager implements Listener {
     public PlayerManager(LSurvivalLib plugin) {
         this.plugin = plugin;
         new ArmorChangeListener(plugin);
+        new DamagesRegister(plugin);
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -60,6 +62,7 @@ public class PlayerManager implements Listener {
             playerStatistic.setDamage(Statistic.OtherStats.DAMAGE.getBaseValue());
             playerStatistic.setTrueDamage(Statistic.OtherStats.TRUE_DAMAGE.getBaseValue());
         }
+        this.setHealthScale(player);
         this.registerPlayer(player);
     }
 
@@ -120,5 +123,21 @@ public class PlayerManager implements Listener {
 
         double totalManaRegen = 1.5 + (0.01 * manaPool);
         playerStatistic.setMana(playerStatistic.getMana() + totalManaRegen);
+    }
+
+    private void setHealthScale(Player player) {
+        PlayerStatistic playerStatistic = new PlayerStatistic(player);
+        player.setHealthScaled(true);
+        double maxHealth = playerStatistic.getMaxHealth();
+        if (maxHealth <= 100) {
+            player.setHealthScale(20);
+        } else if (maxHealth <= 1300) {
+            player.setHealthScale(20 + (maxHealth - 100) / 60);
+        } else {
+            player.setHealthScale(40);
+        }
+        if (playerStatistic.getHealth() > maxHealth) {
+            playerStatistic.setHealth(maxHealth);
+        }
     }
 }
