@@ -3,6 +3,10 @@ package io.github.lucfr1746.LSurvivalLib.ItemStack;
 import de.tr7zw.changeme.nbtapi.NBT;
 import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
 import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBTCompoundList;
+import io.github.lucfr1746.LSurvivalLib.Enchantments.Enchantment;
+import io.github.lucfr1746.LSurvivalLib.Enchantments.Utils.EnchantmentRegister;
+import io.github.lucfr1746.LSurvivalLib.Enchantments.Utils.EnchantmentsLoader;
+import io.github.lucfr1746.LSurvivalLib.Entity.Statistic;
 import io.github.lucfr1746.LSurvivalLib.ItemStack.Category.Category;
 import io.github.lucfr1746.LSurvivalLib.ItemStack.Category.CategoryAPI;
 import io.github.lucfr1746.LSurvivalLib.ItemStack.Tier.Tier;
@@ -12,10 +16,7 @@ import io.github.lucfr1746.LSurvivalLib.Utils.APIs.NumberAPI;
 import io.github.lucfr1746.LSurvivalLib.Utils.APIs.TextAPI;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TranslatableComponent;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
@@ -32,7 +33,6 @@ public class ItemBuilderAPI {
 
     @NotNull private final ItemStack itemStack;
     private String displayName;
-    private String description;
 
     private Tier tier;
     private List<Tier> nearestTiers;
@@ -57,7 +57,6 @@ public class ItemBuilderAPI {
 
     private void loadBasicProperties() {
         this.displayName = getDisplayName();
-        this.description = getDescription();
     }
 
     private void loadTierData() {
@@ -78,20 +77,29 @@ public class ItemBuilderAPI {
         setItemName(this.displayName);
 
         List<String> finalLores = new ArrayList<>();
-    // Leather color
+    // Leather color, flight duration, breaking power
         if (getType().name().startsWith("LEATHER_")) finalLores.add("&7Color: " + getItemHex());
         if (getItemMeta() instanceof FireworkMeta && getFireWorkPower() > 0) finalLores.add("&7Flight Duration: " + getFireWorkPower());
+        if (getBreakingPower() > 0) finalLores.add("&8Breaking Power " + NumberAPI.toStringFixed(getBreakingPower(),0));
     // Add stats lore
+        if (!finalLores.isEmpty()) finalLores.add("");
         finalLores.addAll(buildStatLore());
+    // Enchantments lore
+        if (!finalLores.isEmpty() && !getEnchantments().isEmpty()) {
+            finalLores.add("");
+        }
+        finalLores.addAll(buildEnchantmentsLore());
 
     // Item's description
-        if (!getDescription().isEmpty()) finalLores.addAll(getDescriptionAutoAlignLores(getDescriptionLineLength()));
+        if (!getDescription().isEmpty()) {
+            if (!finalLores.isEmpty()) finalLores.add("");
+            finalLores.addAll(getDescriptionAutoAlignLores(getDescriptionLineLength()));
+        }
 
     // Add category description
         if (!finalLores.isEmpty()) finalLores.add("");
-        String categoryDescription = this.category.getDescription();
-        if (!categoryDescription.isBlank()) {
-            finalLores.add(categoryDescription);
+        if (category.canBeReforged()) {
+            finalLores.add("&8This item can be reforged!");
         }
 
     // Add rarity lore
@@ -102,21 +110,83 @@ public class ItemBuilderAPI {
     private List<String> buildStatLore() {
         List<String> statsLore = new ArrayList<>();
 
-        addStatLore(statsLore, "Damage", getDamage(), "&c");
-        addStatLore(statsLore, "Strength", getStrength(), "&c");
-        addStatLore(statsLore, "Crit Chance", getCritChance(), "&c", "%");
-        addStatLore(statsLore, "Crit Damage", getCritDamage(), "&c", "%");
-        addStatLore(statsLore, "Bonus Attack Speed", getBonusAttackSpeed(), "&c", "%");
-        addStatLore(statsLore, "Health", getHealth(), "&a");
-        addStatLore(statsLore, "Defense", getDefense(), "&a");
-        addStatLore(statsLore, "Speed", getWalkSpeed(), "&a");
-        addStatLore(statsLore, "Intelligence", getIntelligence(), "&a");
-        addStatLore(statsLore, "Health Regen", getHealthRegen(), "&a");
-        addStatLore(statsLore, "Ferocity", getFerocity(), "&a");
-        addStatLore(statsLore, "Vitality", getVitality(), "&a");
-        addStatLore(statsLore, "Swing Range", getSwingRange(), "&a");
+        addStatLore(statsLore, Statistic.OtherStats.DAMAGE.getName(), getDamage(), "&c");
+        addStatLore(statsLore, Statistic.OtherStats.TRUE_DAMAGE.getName(), getTrueDamage(), "&c");
+        addStatLore(statsLore, Statistic.CombatStats.STRENGTH.getName(), getStrength(), "&c");
+        addStatLore(statsLore, Statistic.CombatStats.CRIT_CHANCE.getName(), getCritChance(), "&c", "%");
+        addStatLore(statsLore, Statistic.CombatStats.CRIT_CHANCE.getName(), getCritDamage(), "&c", "%");
+        addStatLore(statsLore, Statistic.CombatStats.BONUS_ATTACK_SPEED.getName(), getBonusAttackSpeed(), "&c", "%");
+
+        addStatLore(statsLore, Statistic.MiscStats.MAGIC_FIND.getName(), getMagicFind(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.HEALTH.getName(), getHealth(), "&a");
+        addStatLore(statsLore, Statistic.OtherStats.ABSORPTION.getName(), getAbsorption(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.DEFENSE.getName(), getDefense(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.TRUE_DEFENSE.getName(), getTrueDefense(), "&a");
+        addStatLore(statsLore, Statistic.GatheringStats.MINING_SPEED.getName(), getMiningSpeed(), "&a");
+        addStatLore(statsLore, Statistic.GatheringStats.MINING_FORTUNE.getName(), getMiningFortune(), "&a");
+        addStatLore(statsLore, Statistic.GatheringStats.FARMING_FORTUNE.getName(), getFarmingFortune(), "&a");
+        addStatLore(statsLore, Statistic.GatheringStats.FORAGING_FORTUNE.getName(), getForagingFortune(), "&a");
+        addStatLore(statsLore, Statistic.GatheringStats.MINING_SPREAD.getName(), getMiningSpread(), "&a");
+        addStatLore(statsLore, Statistic.MiscStats.SPEED.getName(), getWalkSpeed(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.INTELLIGENCE.getName(), getIntelligence(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.HEALTH_REGEN.getName(), getHealthRegen(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.FEROCITY.getName(), getFerocity(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.VITALITY.getName(), getVitality(), "&a");
+        addStatLore(statsLore, Statistic.CombatStats.SWING_RANGE.getName(), getSwingRange(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.ALCHEMY_WISDOM.getName(), getAlchemyWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.CARPENTRY_WISDOM.getName(), getCarpentryWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.COMBAT_WISDOM.getName(), getCombatWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.ENCHANTING_WISDOM.getName(), getEnchantingWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.FARMING_WISDOM.getName(), getFarmingWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.FISHING_WISDOM.getName(), getFishingWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.FORAGING_WISDOM.getName(), getForagingWisdom(), "&a");
+        addStatLore(statsLore, Statistic.WisdomStats.MINING_WISDOM.getName(), getMiningWisdom(), "&a");
 
         return statsLore;
+    }
+
+    private List<String> buildEnchantmentsLore() {
+        List<String> enchantmentsLore = new ArrayList<>();
+        Map<Enchantment, Integer> enchantments = getEnchantments();
+
+        int applyCost = 0;
+
+        if (enchantments == null || enchantments.isEmpty()) {
+            return enchantmentsLore;
+        }
+
+        if (enchantments.size() >= 5) {
+            StringBuilder lore = new StringBuilder().append("&9");
+            for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+                Enchantment enchantment = entry.getKey();
+                EnchantmentRegister enchantmentRegister = EnchantmentsLoader.getEnchantmentRegister(enchantment);
+                lore.append(", ").append(enchantmentRegister.getName()).append(" ").append(NumberAPI.toRoman(entry.getValue()));
+            }
+            enchantmentsLore.addAll(getAutoAlignLores(33, lore.toString().replaceFirst(", ", "")));
+        } else {
+            for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+                Enchantment enchantment = entry.getKey();
+                EnchantmentRegister enchantmentRegister = EnchantmentsLoader.getEnchantmentRegister(enchantment);
+                int level = entry.getValue();
+
+                String name = enchantmentRegister.getName();
+                applyCost += enchantmentRegister.getAnvilApplyCostForLevel(level);
+                String description = enchantmentRegister.getDescriptionForLevel(level);
+
+                enchantmentsLore.add("&9" + name + " " + (isLoreNumbered() ? level : NumberAPI.toRoman(level)));
+                enchantmentsLore.addAll(getAutoAlignLores(33, description));
+            }
+        }
+        if (getId().endsWith("_ENCHANTED_BOOK")) {
+            if (applyCost > 0) {
+                enchantmentsLore.add("");
+                enchantmentsLore.add("&7Apply Cost: " + "&3" + applyCost + " Exp Levels");
+            }
+            enchantmentsLore.add("");
+            enchantmentsLore.addAll(getAutoAlignLores(33, "&7Use this on an item in an Anvil to apply it!"));
+        }
+
+        return enchantmentsLore;
     }
 
     private void addStatLore(List<String> loreList, String statName, double value, String color) {
@@ -307,6 +377,20 @@ public class ItemBuilderAPI {
         return getItemMeta().isHideTooltip();
     }
 
+    public ItemBuilderAPI setAttribute(String attribute, double value) {
+        if (isInvalidItem()) return null;
+        NBT.modifyComponents(this.itemStack, nbt -> {
+            ReadWriteNBTCompoundList modifiers = nbt.getCompoundList("attribute_modifiers");
+            ReadWriteNBT attributeCompound = modifiers.addCompound();
+            attributeCompound.setString("type", attribute);
+            attributeCompound.setString("slot", "mainhand");
+            attributeCompound.setString("id",UUID.randomUUID().toString());
+            attributeCompound.setDouble("amount", value);
+            attributeCompound.setString("operation","add_value");
+        });
+        return this;
+    }
+
     public ItemBuilderAPI setPotionType(@NotNull PotionType potType) {
         if (isInvalidItem()) return null;
 
@@ -487,9 +571,10 @@ public class ItemBuilderAPI {
 
             // Get the 'properties' list (no casting)
             ReadWriteNBTCompoundList propertiesList = profileNbt.getCompoundList("properties");
-            if (propertiesList == null || propertiesList.isEmpty()) return "NONE"; // Return "none" if properties list is empty
+            if (propertiesList == null || propertiesList.isEmpty()) return "NONE"; // Return "none"
+            // if a property list is empty
 
-            // Get the first compound in the properties list
+            // Get the first compound in the property list
             ReadWriteNBT propertiesNbt = propertiesList.get(0); // No need to cast to List<ReadWriteNBT>
 
             // Return the texture value or "none" if it's not found
@@ -618,6 +703,15 @@ public class ItemBuilderAPI {
         return setLores(lores);
     }
 
+    public ItemBuilderAPI addLores(List<String> loresToAdd) {
+        if (isInvalidItem()) return null;
+
+        List<String> lores = new ArrayList<>(getLores());
+        lores.addAll(loresToAdd);
+
+        return setLores(lores);
+    }
+
     public ItemBuilderAPI addLore(int index, String lore) {
         if (isInvalidItem() || index <= 0) return null;
 
@@ -654,9 +748,6 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return null;
 
         return NBT.modify(this.itemStack, nbt -> {
-            if (!nbt.hasTag("description")) {
-                nbt.setString("description", "");
-            }
             return nbt.getOrDefault("description", "");
         });
     }
@@ -667,13 +758,16 @@ public class ItemBuilderAPI {
         NBT.modify(this.itemStack, nbt -> {
             nbt.setString("description", description);
         });
-        this.description = description;
         return this;
     }
 
     public List<String> getDescriptionAutoAlignLores(int maxLength) {
+        return getAutoAlignLores(maxLength, getDescription());
+    }
+
+    public List<String> getAutoAlignLores(int maxLength, String description) {
         if (isInvalidItem()) return null;
-        return List.of(ChatPaginator.wordWrap(new TextAPI(this.description).colorRecognise().build(), maxLength));
+        return List.of(ChatPaginator.wordWrap(new TextAPI(description).colorRecognise().build(), maxLength));
     }
 
     public ItemBuilderAPI setDescriptionLineLength(int value) {
@@ -694,10 +788,7 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return -1;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
-            if (!nbtList.hasTag("description_cap")) {
-                nbtList.setInteger("description_cap", 30);
-            }
-            return nbtList.getInteger("description_cap");
+            return nbtList.getOrDefault("description_cap", 30);
         });
     }
 
@@ -738,6 +829,74 @@ public class ItemBuilderAPI {
         return this.nearestCategories;
     }
 
+    public ItemBuilderAPI addEnchantment(Enchantment enchantment, int level) {
+        if (isInvalidItem()) return null;
+        try {
+            NBT.modify(this.itemStack, nbt -> {
+                ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("enchantments");
+                for (Enchantment conflictEnchant : EnchantmentsLoader.getEnchantmentRegister(enchantment).getExclusiveEnchantments()) {
+                    if (conflictEnchant.equals(enchantment)) {
+                        nbtList.removeKey(enchantment.name().toLowerCase());
+                    }
+                }
+                nbtList.setInteger(enchantment.name().toLowerCase(), level);
+            });
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("Error while adding enchantment to the item!");
+        }
+        setGlowing(!getEnchantments().isEmpty());
+        return this;
+    }
+
+    public ItemBuilderAPI removeEnchantment(Enchantment enchantment) {
+        if (isInvalidItem()) return null;
+        try {
+            NBT.modify(this.itemStack, nbt -> {
+                ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("enchantments");
+                nbtList.removeKey(enchantment.name().toLowerCase());
+            });
+        } catch (Exception e) {
+            Bukkit.getLogger().warning("Error while removing enchantment to the item!");
+        }
+        setGlowing(!getEnchantments().isEmpty());
+        return this;
+    }
+
+    public Map<Enchantment, Integer> getEnchantments() {
+        if (isInvalidItem()) return Collections.emptyMap();
+
+        Map<Enchantment, Integer> enchantmentsMap = new HashMap<>();
+        try {
+            NBT.modify(this.itemStack, nbt -> {
+                ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("enchantments");
+                for (String key : nbtList.getKeys()) {
+                    try {
+                        Enchantment enchantment = Enchantment.valueOf(key.toUpperCase());
+                        enchantmentsMap.put(enchantment, nbtList.getInteger(key));
+                    } catch (IllegalArgumentException e) {
+                        Bukkit.getLogger().warning("Invalid enchantment key: " + key);
+                    }
+                }
+                return null; // Return value ignored in NBT.modify context
+            });
+        } catch (Exception e) {
+            Bukkit.getLogger().severe("Error while getting enchantments from the item!");
+        }
+
+        // Return a sorted map using TreeMap (natural order sorts by keys alphabetically)
+        return enchantmentsMap.isEmpty() ? new HashMap<>() : new TreeMap<>(enchantmentsMap);
+    }
+
+    public Integer getEnchantmentLevel(Enchantment enchantment) {
+        if (isInvalidItem()) return null;
+        return getEnchantments().getOrDefault(enchantment, null);
+    }
+
+    public boolean hasEnchantment(Enchantment enchantment) {
+        if (isInvalidItem()) return false;
+        return getEnchantments().containsKey(enchantment);
+    }
+
     public ItemBuilderAPI setCategory(Category category) {
         if (isInvalidItem()) return null;
         try {
@@ -775,10 +934,7 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return false;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
-            if (!nbtList.hasTag("dungeon_item")) {
-                nbtList.setBoolean("dungeon_item", false);
-            }
-            return nbtList.getBoolean("dungeon_item");
+            return nbtList.getOrDefault("dungeon_item", false);
         });
     }
 
@@ -799,10 +955,7 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return false;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
-            if (!nbtList.hasTag("lore_numbered")) {
-                nbtList.setBoolean("lore_numbered", false);
-            }
-            return nbtList.getBoolean("lore_numbered");
+            return nbtList.getOrDefault("lore_numbered", false);
         });
     }
 
@@ -841,11 +994,7 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return false;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
-            if (!nbtList.hasTag("unique")) {
-                nbtList.setString("unique", "none");
-                return false;
-            }
-            return !Objects.equals(nbtList.getString("unique"), "none");
+            return !String.valueOf(nbtList.getOrDefault("unique", "none")).equals("none");
         });
     }
 
@@ -866,10 +1015,7 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return false;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("utils");
-            if (!nbtList.hasTag("is_Recombobulated")) {
-                nbtList.setBoolean("is_recombobulated", false);
-            }
-            return nbtList.getBoolean("is_recombobulated");
+            return nbtList.getOrDefault("is_recombobulated", false);
         });
     }
 
@@ -891,102 +1037,14 @@ public class ItemBuilderAPI {
         if (isInvalidItem()) return -1;
         return NBT.modify(this.itemStack, nbt -> {
             ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes");
-            if (!nbtList.hasTag("timestamp")) {
-                nbtList.setLong("timestamp", -1L);
-            }
-            return nbtList.getLong("timestamp");
-        });
-    }
-
-    public ItemBuilderAPI setDamage(double value) {
-        if (isInvalidItem()) return null;
-        NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("DAMAGE", value);
-        });
-        return this;
-    }
-
-    public double getDamage() {
-        if (isInvalidItem()) return 0;
-        return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("DAMAGE", 0d);
-        });
-    }
-
-    public ItemBuilderAPI setStrength(double value) {
-        if (isInvalidItem()) return null;
-        NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("STRENGTH", value);
-        });
-        return this;
-    }
-
-    public double getStrength() {
-        if (isInvalidItem()) return 0;
-        return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("STRENGTH", 0d);
-        });
-    }
-
-    public ItemBuilderAPI setCritChance(double value) {
-        if (isInvalidItem()) return null;
-        NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("CRITICAL_CHANCE", value);
-        });
-        return this;
-    }
-
-    public double getCritChance() {
-        if (isInvalidItem()) return 0;
-        return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("CRITICAL_CHANCE", 0d);
-        });
-    }
-
-    public ItemBuilderAPI setCritDamage(double value) {
-        if (isInvalidItem()) return null;
-        NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("CRITICAL_DAMAGE", value);
-        });
-        return this;
-    }
-
-    public double getCritDamage() {
-        if (isInvalidItem()) return 0;
-        return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("CRITICAL_DAMAGE", 0d);
-        });
-    }
-
-    public ItemBuilderAPI setBonusAttackSpeed(double value) {
-        if (isInvalidItem()) return null;
-        NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("BONUS_ATTACK_SPEED", value);
-        });
-        return this;
-    }
-
-    public double getBonusAttackSpeed() {
-        if (isInvalidItem()) return 0;
-        return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("BONUS_ATTACK_SPEED", 0d);
+            return nbtList.getOrDefault("timestamp", -1L);
         });
     }
 
     public ItemBuilderAPI setHealth(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             nbtList.setDouble("HEALTH", value);
         });
         return this;
@@ -995,7 +1053,7 @@ public class ItemBuilderAPI {
     public double getHealth() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             return nbtList.getOrDefault("HEALTH", 0d);
         });
     }
@@ -1003,7 +1061,7 @@ public class ItemBuilderAPI {
     public ItemBuilderAPI setDefense(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             nbtList.setDouble("DEFENSE", value);
         });
         return this;
@@ -1012,32 +1070,32 @@ public class ItemBuilderAPI {
     public double getDefense() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             return nbtList.getOrDefault("DEFENSE", 0d);
         });
     }
 
-    public ItemBuilderAPI setWalkSpeed(double value) {
+    public ItemBuilderAPI setStrength(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("WALK_SPEED", value);
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            nbtList.setDouble("STRENGTH", value);
         });
         return this;
     }
 
-    public double getWalkSpeed() {
+    public double getStrength() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("WALK_SPEED", 0d);
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            return nbtList.getOrDefault("STRENGTH", 0d);
         });
     }
 
     public ItemBuilderAPI setIntelligence(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             nbtList.setDouble("INTELLIGENCE", value);
         });
         return this;
@@ -1046,32 +1104,83 @@ public class ItemBuilderAPI {
     public double getIntelligence() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             return nbtList.getOrDefault("INTELLIGENCE", 0d);
         });
     }
 
-    public ItemBuilderAPI setHealthRegen(double value) {
+    public ItemBuilderAPI setCritChance(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            nbtList.setDouble("HEALTH_REGEN", value);
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            nbtList.setDouble("CRITICAL_CHANCE", value);
         });
         return this;
     }
 
-    public double getHealthRegen() {
+    public double getCritChance() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
-            return nbtList.getOrDefault("HEALTH_REGEN", 0d);
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            return nbtList.getOrDefault("CRITICAL_CHANCE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setCritDamage(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            nbtList.setDouble("CRITICAL_DAMAGE", value);
+        });
+        return this;
+    }
+
+    public double getCritDamage() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            return nbtList.getOrDefault("CRITICAL_DAMAGE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setBonusAttackSpeed(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            nbtList.setDouble("BONUS_ATTACK_SPEED", value);
+        });
+        return this;
+    }
+
+    public double getBonusAttackSpeed() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            return nbtList.getOrDefault("BONUS_ATTACK_SPEED", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setTrueDefense(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            nbtList.setDouble("TRUE_DEFENSE", value);
+        });
+        return this;
+    }
+
+    public double getTrueDefense() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            return nbtList.getOrDefault("TRUE_DEFENSE", 0d);
         });
     }
 
     public ItemBuilderAPI setFerocity(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             nbtList.setDouble("FEROCITY", value);
         });
         return this;
@@ -1080,15 +1189,32 @@ public class ItemBuilderAPI {
     public double getFerocity() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             return nbtList.getOrDefault("FEROCITY", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setHealthRegen(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            nbtList.setDouble("HEALTH_REGEN", value);
+        });
+        return this;
+    }
+
+    public double getHealthRegen() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
+            return nbtList.getOrDefault("HEALTH_REGEN", 0d);
         });
     }
 
     public ItemBuilderAPI setVitality(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             nbtList.setDouble("VITALITY", value);
         });
         return this;
@@ -1097,7 +1223,7 @@ public class ItemBuilderAPI {
     public double getVitality() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             return nbtList.getOrDefault("VITALITY", 0d);
         });
     }
@@ -1105,7 +1231,7 @@ public class ItemBuilderAPI {
     public ItemBuilderAPI setSwingRange(double value) {
         if (isInvalidItem()) return null;
         NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             nbtList.setDouble("SWING_RANGE", value);
         });
         return this;
@@ -1114,8 +1240,331 @@ public class ItemBuilderAPI {
     public double getSwingRange() {
         if (isInvalidItem()) return 0;
         return NBT.modify(this.itemStack, nbt -> {
-            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats");
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("CombatStats");
             return nbtList.getOrDefault("SWING_RANGE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setMiningSpeed(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            nbtList.setDouble("MINING_SPEED", value);
+        });
+        return this;
+    }
+
+    public double getMiningSpeed() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            return nbtList.getOrDefault("MINING_SPEED", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setMiningFortune(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            nbtList.setDouble("MINING_FORTUNE", value);
+        });
+        return this;
+    }
+
+    public double getMiningFortune() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            return nbtList.getOrDefault("MINING_FORTUNE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setMiningSpread(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            nbtList.setDouble("MINING_SPREAD", value);
+        });
+        return this;
+    }
+
+    public double getMiningSpread() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            return nbtList.getOrDefault("MINING_SPREAD", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setFarmingFortune(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            nbtList.setDouble("FARMING_FORTUNE", value);
+        });
+        return this;
+    }
+
+    public double getFarmingFortune() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            return nbtList.getOrDefault("FARMING_FORTUNE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setForagingFortune(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            nbtList.setDouble("FORAGING_FORTUNE", value);
+        });
+        return this;
+    }
+
+    public double getForagingFortune() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            return nbtList.getOrDefault("FORAGING_FORTUNE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setBreakingPower(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            nbtList.setDouble("BREAKING_POWER", value);
+        });
+        return this;
+    }
+
+    public double getBreakingPower() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("GatheringStats");
+            return nbtList.getOrDefault("BREAKING_POWER", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setAlchemyWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("ALCHEMY_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getAlchemyWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("ALCHEMY_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setCarpentryWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("CARPENTRY_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getCarpentryWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("CARPENTRY_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setCombatWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("COMBAT_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getCombatWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("COMBAT_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setEnchantingWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("ENCHANTING_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getEnchantingWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("ENCHANTING_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setFarmingWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("FARMING_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getFarmingWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("FARMING_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setFishingWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("FISHING_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getFishingWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("FISHING_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setForagingWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("FORAGING_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getForagingWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("FORAGING_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setMiningWisdom(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            nbtList.setDouble("MINING_WISDOM", value);
+        });
+        return this;
+    }
+
+    public double getMiningWisdom() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("WisdomStats");
+            return nbtList.getOrDefault("MINING_WISDOM", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setWalkSpeed(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("MiscStats");
+            nbtList.setDouble("WALK_SPEED", value);
+        });
+        return this;
+    }
+
+    public double getWalkSpeed() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("MiscStats");
+            return nbtList.getOrDefault("WALK_SPEED", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setMagicFind(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("MiscStats");
+            nbtList.setDouble("MAGIC_FIND", value);
+        });
+        return this;
+    }
+
+    public double getMagicFind() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("MiscStats");
+            return nbtList.getOrDefault("MAGIC_FIND", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setAbsorption(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("OtherStats");
+            nbtList.setDouble("ABSORPTION", value);
+        });
+        return this;
+    }
+
+    public double getAbsorption() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("OtherStats");
+            return nbtList.getOrDefault("ABSORPTION", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setDamage(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("OtherStats");
+            nbtList.setDouble("DAMAGE", value);
+        });
+        return this;
+    }
+
+    public double getDamage() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("OtherStats");
+            return nbtList.getOrDefault("DAMAGE", 0d);
+        });
+    }
+
+    public ItemBuilderAPI setTrueDamage(double value) {
+        if (isInvalidItem()) return null;
+        NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("OtherStats");
+            nbtList.setDouble("TRUE_DAMAGE", value);
+        });
+        return this;
+    }
+
+    public double getTrueDamage() {
+        if (isInvalidItem()) return 0;
+        return NBT.modify(this.itemStack, nbt -> {
+            ReadWriteNBT nbtList = nbt.getOrCreateCompound("ExtraAttributes").getOrCreateCompound("stats").getOrCreateCompound("OtherStats");
+            return nbtList.getOrDefault("TRUE_DAMAGE", 0d);
         });
     }
 

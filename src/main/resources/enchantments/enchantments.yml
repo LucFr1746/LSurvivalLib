@@ -1,0 +1,4642 @@
+# do not touch if you don't know what you are doing
+#-------------------------------------------#
+#                   Angler                  #
+#-------------------------------------------#
+ANGLER:
+  name: "Angler"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 58
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Grants &3+1 α Sea Creature Chance&7."
+    2: "&7Grants &3+2 α Sea Creature Chance&7."
+    3: "&7Grants &3+3 α Sea Creature Chance&7."
+    4: "&7Grants &3+4 α Sea Creature Chance&7."
+    5: "&7Grants &3+5 α Sea Creature Chance&7."
+    6: "&7Grants &3+6 α Sea Creature Chance&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 4
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 5
+#-------------------------------------------#
+#               Aqua Affinity               #
+#-------------------------------------------#
+AQUA_AFFINITY:
+  name: "Aqua Affinity"
+  min-level: 1
+  max-level: 1
+  enchanting-table:
+    min-level: 1
+    max-level: 1
+    cost:
+      1: 15
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 1
+    cost:
+      1: 13
+  rarities:
+    1: "COMMON"
+  description:
+    1: "&7Increases your underwater mining rate."
+  sources:
+    - " &7- Enchantment Table (&aI&7)"
+  support-categories:
+    - HELMET
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 1
+#-------------------------------------------#
+#            Bane of Arthropods             #
+#-------------------------------------------#
+BANE_OF_ARTHROPODS:
+  name: "Bane of Arthropods"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a10%&7."
+    2: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a20%&7."
+    3: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a30%&7."
+    4: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a40%&7."
+    5: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a60%&7."
+    6: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a80%&7."
+    7: "&7Increases damage dealt to Bees, Cave Spiders, Endermite, Silverfish, and Spiders by &a100%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  conflicts:
+    - SHARPNESS
+    - SMITE
+#-------------------------------------------#
+#                 Big brain                 #
+#-------------------------------------------#
+BIG_BRAIN:
+  name: "Big Brain"
+  min-level: 3
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      3: 55
+      4: 79
+      5: 91
+  rarities:
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    3: "&7Grants &b+15 ✎ Intelligence&7."
+    4: "&7Grants &b+20 ✎ Intelligence&7."
+    5: "&7Grants &b+25 ✎ Intelligence&7."
+  sources:
+    - " &7- Dark Auction (&aIII-V&7)"
+    - " &7- Bazaar (&aIII-V&7)"
+  support-categories:
+    - HELMET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 21
+#-------------------------------------------#
+#              Blast Protection             #
+#-------------------------------------------#
+BLAST_PROTECTION:
+  name: "Blast Protection"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Grants &a+30 ❈ Defense &7against explosions."
+    2: "&7Grants &a+60 ❈ Defense &7against explosions."
+    3: "&7Grants &a+90 ❈ Defense &7against explosions."
+    4: "&7Grants &a+120 ❈ Defense &7against explosions."
+    5: "&7Grants &a+150 ❈ Defense &7against explosions."
+    6: "&7Grants &a+180 ❈ Defense &7against explosions."
+    7: "&7Grants &a+210 ❈ Defense &7against explosions."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - ARMOR
+  conflicts:
+    - PROTECTION
+    - FIRE_PROTECTION
+    - PROJECTILE_PROTECTION
+#-------------------------------------------#
+#                  Blessing                 #
+#-------------------------------------------#
+BLESSING:
+  name: "Blessing"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&a5% &7chance to get double drops when fishing."
+    2: "&a10% &7chance to get double drops when fishing."
+    3: "&a15% &7chance to get double drops when fishing."
+    4: "&a20% &7chance to get double drops when fishing."
+    5: "&a25% &7chance to get double drops when fishing."
+    6: "&a30% &7chance to get double drops when fishing."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 9
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 6
+#-------------------------------------------#
+#                  Caster                 #
+#-------------------------------------------#
+CASTER:
+  name: "Caster"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 58
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&a5% &7chance to not consume bait."
+    2: "&a10% &7chance to not consume bait."
+    3: "&a15% &7chance to not consume bait."
+    4: "&a20% &7chance to not consume bait."
+    5: "&a25% &7chance to not consume bait."
+    6: "&a30% &7chance to not consume bait."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 15
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 18
+#-------------------------------------------#
+#                  Cayenne                  #
+#-------------------------------------------#
+CAYENNE:
+  name: "Cayenne"
+  min-level: 4
+  max-level: 5
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 5
+    cost:
+      4: 91
+      5: 179
+  rarities:
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    4: "&7Grants &c+0.8 ❤ Health &7and &f+0.4 ❂ True Defense &7per digit in your &6Magical Power."
+    5: "&7Grants &c+1 ❤ Health &7and &f+0.5 ❂ True Defense &7per digit in your &6Magical Power."
+  sources:
+    - " &7- Bazaar (&aIV-V&7)"
+    - " &7- Chili Pepper Collection (&aIV-V&7)"
+  support-categories:
+    - GLOVES
+    - BELT
+    - NECKLACE
+    - BRACELET
+    - CLOAK
+#-------------------------------------------#
+#                 Champion                  #
+#-------------------------------------------#
+CHAMPION:
+  name: "Champion"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 1
+    cost:
+      1: 24
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &a3% &7extra Combat XP, The 2nd hit on a mob grants &6+1.4 Coins &7& &3+7 &7exp orbs.\nGain &a50,000 Combat XP to tier up."
+    2: "&7Gain &a3.78% &7extra Combat XP, The 2nd hit on a mob grants &6+1.8 Coins &7& &3+9 &7exp orbs.\nGain &a100,000 Combat XP to tier up."
+    3: "&7Gain &a4.56% &7extra Combat XP, The 2nd hit on a mob grants &6+2.2 Coins &7& &3+11 &7exp orbs.\nGain &a250,000 Combat XP to tier up."
+    4: "&7Gain &a5.33% &7extra Combat XP, The 2nd hit on a mob grants &6+2.6 Coins &7& &3+13 &7exp orbs.\nGain &a500,000 Combat XP to tier up."
+    5: "&7Gain &a6.11% &7extra Combat XP, The 2nd hit on a mob grants &6+3 Coins &7& &3+15 &7exp orbs.\nGain &a1,000,000 Combat XP to tier up."
+    6: "&7Gain &a6.89% &7extra Combat XP, The 2nd hit on a mob grants &6+3.4 Coins &7& &3+17 &7exp orbs.\nGain &a1,500,000 Combat XP to tier up."
+    7: "&7Gain &a7.67% &7extra Combat XP, The 2nd hit on a mob grants &6+3.8 Coins &7& &3+19 &7exp orbs.\nGain &a2,000,000 Combat XP to tier up."
+    8: "&7Gain &a8.44% &7extra Combat XP, The 2nd hit on a mob grants &6+4.2 Coins &7& &3+21 &7exp orbs.\nGain &a2,500,000 Combat XP to tier up."
+    9: "&7Gain &a9.22% &7extra Combat XP, The 2nd hit on a mob grants &6+4.6 Coins &7& &3+23 &7exp orbs.\nGain &a3,000,000 Combat XP to tier up."
+    10: "&7Gain &a10% &7extra Combat XP, The 2nd hit on a mob grants &6+5 Coins &7& &3+25 &7exp orbs."
+  sources:
+    - " &7- Community Shop (&aI&7)"
+    - " &7- Bazaar (&aI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+#-------------------------------------------#
+#                   Chance                  #
+#-------------------------------------------#
+CHANCE:
+  name: "Chance"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 15
+      2: 30
+      3: 45
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 5
+    cost:
+      2: 27
+      3: 41
+      4: 91
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases the chance of a Monster dropping an item by &a15%&7."
+    2: "&7Increases the chance of a Monster dropping an item by &a30%&7."
+    3: "&7Increases the chance of a Monster dropping an item by &a45%&7."
+    4: "&7Increases the chance of a Monster dropping an item by &a60%&7."
+    5: "&7Increases the chance of a Monster dropping an item by &a75%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Experiments (&aIII-V&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 11
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 4
+#-------------------------------------------#
+#                   Charm                   #
+#-------------------------------------------#
+CHARM:
+  name: "Charm"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 18
+      2: 23
+      3: 27
+      4: 36
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases the chance to receive higher-tiered Trophy Fish by &a2%&7."
+    2: "&7Increases the chance to receive higher-tiered Trophy Fish by &a4%&7."
+    3: "&7Increases the chance to receive higher-tiered Trophy Fish by &a6%&7."
+    4: "&7Increases the chance to receive higher-tiered Trophy Fish by &a8%&7."
+    5: "&7Increases the chance to receive higher-tiered Trophy Fish by &a10%&7."
+  sources:
+    - " &7- Fishing (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 25
+#-------------------------------------------#
+#                  Cleave                   #
+#-------------------------------------------#
+CLEAVE:
+  name: "Cleave"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Deals &a3% &7of your damage dealt to other monsters within &a3.3 &7blocks of the target."
+    2: "&7Deals &a6% &7of your damage dealt to other monsters within &a3.6 &7blocks of the target."
+    3: "&7Deals &a9% &7of your damage dealt to other monsters within &a3.9 &7blocks of the target."
+    4: "&7Deals &a12% &7of your damage dealt to other monsters within &a4.2 &7blocks of the target."
+    5: "&7Deals &a15% &7of your damage dealt to other monsters within &a4.5 &7blocks of the target."
+    6: "&7Deals &a20% &7of your damage dealt to other monsters within &a4.8 &7blocks of the target."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 4
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+#-------------------------------------------#
+#                  Compact                  #
+#-------------------------------------------#
+COMPACT:
+  name: "Compact"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 1
+    cost:
+      1: 24
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &3+1 ☯ Mining Wisdom &7and a &a0.2% &7chance of drop a enchanted item.\n\nBreak &a100 &7blocks to tier up."
+    2: "&7Gain &3+2 ☯ Mining Wisdom &7and a &a0.3% &7chance of drop a enchanted item.\n\nBreak &a500 &7blocks to tier up."
+    3: "&7Gain &3+3 ☯ Mining Wisdom &7and a &a0.3% &7chance of drop a enchanted item.\n\nBreak &a1,500 &7blocks to tier up."
+    4: "&7Gain &3+4 ☯ Mining Wisdom &7and a &a0.3% &7chance of drop a enchanted item.\n\nBreak &a5,000 &7blocks to tier up."
+    5: "&7Gain &3+5 ☯ Mining Wisdom &7and a &a0.3% &7chance of drop a enchanted item.\n\nBreak &a15,000 &7blocks to tier up."
+    6: "&7Gain &3+6 ☯ Mining Wisdom &7and a &a0.4% &7chance of drop a enchanted item.\n\nBreak &a50,000 &7blocks to tier up."
+    7: "&7Gain &3+7 ☯ Mining Wisdom &7and a &a0.4% &7chance of drop a enchanted item.\n\nBreak &a150,000 &7blocks to tier up."
+    8: "&7Gain &3+8 ☯ Mining Wisdom &7and a &a0.4% &7chance of drop a enchanted item.\n\nBreak &a500,000 &7blocks to tier up."
+    9: "&7Gain &3+9 ☯ Mining Wisdom &7and a &a0.5% &7chance of drop a enchanted item.\n\nBreak &a1,000,000 &7blocks to tier up."
+    10: "&7Gain &3+10 ☯ Mining Wisdom &7and a &a0.6% &7chance of drop a enchanted item."
+  sources:
+    - " &7- Community Shop (&aI&7)"
+    - " &7- Bazaar (&aI&7)"
+  support-categories:
+    - PICKAXE
+    - DRILL
+    - GAUNTLET
+#-------------------------------------------#
+#                 Corruption                #
+#-------------------------------------------#
+CORRUPTION:
+  name: "Corruption"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 18
+      2: 23
+      3: 27
+      4: 36
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Gain a &a1% &7chance to spawn a Corrupted Sea Creature."
+    2: "&7Gain a &a2% &7chance to spawn a Corrupted Sea Creature."
+    3: "&7Gain a &a3% &7chance to spawn a Corrupted Sea Creature."
+    4: "&7Gain a &a4% &7chance to spawn a Corrupted Sea Creature."
+    5: "&7Gain a &a5% &7chance to spawn a Corrupted Sea Creature."
+  sources:
+    - " &7- Fishing (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 25
+#-------------------------------------------#
+#              Counter Strike               #
+#-------------------------------------------#
+COUNTER_STRIKE:
+  name: "Counter Strike"
+  min-level: 3
+  max-level: 5
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 5
+    cost:
+      3: 55
+      4: 79
+      5: 91
+  rarities:
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    3: "&7Gain &a+6 ❈ Defense &7for &67s &7on the first hit from an enemy."
+    4: "&7Gain &a+8 ❈ Defense &7for &67s &7on the first hit from an enemy."
+    5: "&7Gain &a+10 ❈ Defense &7for &67s &7on the first hit from an enemy."
+  sources:
+    - " &7- Dark Auction (&aIII-V&7)"
+    - " &7- Bazaar (&aIII-V&7)"
+  support-categories:
+    - CHESTPLATE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 22
+#-------------------------------------------#
+#                  Critical                 #
+#-------------------------------------------#
+CRITICAL:
+  name: "Critical"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 58
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases &9☠ Crit Damage &7by &a10%&7."
+    2: "&7Increases &9☠ Crit Damage &7by &a20%&7."
+    3: "&7Increases &9☠ Crit Damage &7by &a30%&7."
+    4: "&7Increases &9☠ Crit Damage &7by &a40%&7."
+    5: "&7Increases &9☠ Crit Damage &7by &a50%&7."
+    6: "&7Increases &9☠ Crit Damage &7by &a70%&7."
+    7: "&7Increases &9☠ Crit Damage &7by &a100%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Sven Packmaster (&aVI&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 9
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 4
+#-------------------------------------------#
+#                   Cubism                  #
+#-------------------------------------------#
+CUBISM:
+  name: "Cubism"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Increases damage dealt to Magma Cubes, Creepers, and Slimes by &a10%&7."
+    2: "&7Increases damage dealt to Magma Cubes, Creepers, and Slimes by &a20%&7."
+    3: "&7Increases damage dealt to Magma Cubes, Creepers, and Slimes by &a30%&7."
+    4: "&7Increases damage dealt to Magma Cubes, Creepers, and Slimes by &a40%&7."
+    5: "&7Increases damage dealt to Magma Cubes, Creepers, and Slimes by &a60%&7."
+    6: "&7Increases damage dealt to Magma Cubes, Creepers, and Slimes by &a80%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING WEAPON
+    - GAUNTLET
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 3
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+#-------------------------------------------#
+#                Cultivating                #
+#-------------------------------------------#
+CULTIVATING:
+  name: "Cultivating"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 1
+    cost:
+      1: 24
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &3+1 ☯ Farming Wisdom &7and &6+2 ☘ Farming Fortune&7.\n\nHarvest &a1,000 &7crops to tier up."
+    2: "&7Gain &3+2 ☯ Farming Wisdom &7and &6+4 ☘ Farming Fortune&7.\n\nHarvest &a5,000 &7crops to tier up."
+    3: "&7Gain &3+3 ☯ Farming Wisdom &7and &6+6 ☘ Farming Fortune&7.\n\nHarvest &a25,000 &7crops to tier up."
+    4: "&7Gain &3+4 ☯ Farming Wisdom &7and &6+8 ☘ Farming Fortune&7.\n\nHarvest &a100,000 &7crops to tier up."
+    5: "&7Gain &3+5 ☯ Farming Wisdom &7and &6+10 ☘ Farming Fortune&7.\n\nHarvest &a300,000 &7crops to tier up."
+    6: "&7Gain &3+6 ☯ Farming Wisdom &7and &6+12 ☘ Farming Fortune&7.\n\nHarvest &a1,500,000 &7crops to tier up."
+    7: "&7Gain &3+7 ☯ Farming Wisdom &7and &6+14 ☘ Farming Fortune&7.\n\nHarvest &a5,000,000 &7crops to tier up."
+    8: "&7Gain &3+8 ☯ Farming Wisdom &7and &6+16 ☘ Farming Fortune&7.\n\nHarvest &a20,000,000 &7crops to tier up."
+    9: "&7Gain &3+9 ☯ Farming Wisdom &7and &6+18 ☘ Farming Fortune&7.\n\nHarvest &a100,000,000 &7crops to tier up."
+    10: "&7Gain &3+10 ☯ Farming Wisdom &7and &6+20 ☘ Farming Fortune&7."
+  sources:
+    - " &7- Community Shop (&aI&7)"
+    - " &7- Bazaar (&aI&7)"
+  support-categories:
+    - AXE
+    - HOE
+#-------------------------------------------#
+#                Dedication                 #
+#-------------------------------------------#
+DEDICATION:
+  name: "Dedication"
+  min-level: 1
+  max-level: 4
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 4
+    cost:
+      1: 18
+      2: 23
+      3: 27
+      4: 91
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+  description:
+    1: "&7Grants &60.5 ☘ Farming Fortune &7for crops, multiplied by your &bGarden &7milestone for that crop."
+    2: "&7Grants &60.75 ☘ Farming Fortune &7for crops, multiplied by your &bGarden &7milestone for that crop."
+    3: "&7Grants &61 ☘ Farming Fortune &7for crops, multiplied by your &bGarden &7milestone for that crop."
+    4: "&7Grants &62 ☘ Farming Fortune &7for crops, multiplied by your &bGarden &7milestone for that crop."
+  sources:
+    - " &7- SkyMart (&aI&7)"
+    - " &7- Bazaar (&aI-IV&7)"
+    - " &7- Librarian Garden Visitor (&aIV&7)"
+    - " &7- Ravenous Rhino Garden Visitor (&aIV&7)"
+  support-categories:
+    - AXE
+    - HOE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 12
+#-------------------------------------------#
+#                  Delicate                 #
+#-------------------------------------------#
+DELICATE:
+  name: "Delicate"
+  min-level: 5
+  max-level: 5
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 5
+    cost:
+      5: 0
+  rarities:
+    5: "UNCOMMON"
+  description:
+    5: "&7Avoids breaking stems and baby crops."
+  sources:
+    - " &7- Anita (&aV&7)"
+    - " &7- Bazaar (&aV&7)"
+  support-categories:
+    - AXE
+    - HOE
+#-------------------------------------------#
+#               Depth Strider               #
+#-------------------------------------------#
+DEPTH_STRIDER:
+  name: "Depth Strider"
+  min-level: 1
+  max-level: 3
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 10
+      2: 20
+      3: 30
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      2: 18
+      3: 27
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Reduces how much you are slowed in the water by &a33%&7."
+    2: "&7Reduces how much you are slowed in the water by &a67%&7."
+    3: "&7Reduces how much you are slowed in the water by &a100%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+  support-categories:
+    - BOOTS
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 4
+  conflicts:
+    - FROST_WALKER
+#-------------------------------------------#
+#                Divine Gift                #
+#-------------------------------------------#
+DIVINE_GIFT:
+  name: "Divine Gift"
+  min-level: 1
+  max-level: 3
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      1: 45
+      2: 91
+      3: 136
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Grants &b+2 ✯ Magic Find&7."
+    2: "&7Grants &b+4 ✯ Magic Find&7."
+    3: "&7Grants &b+5 ✯ Magic Find&7."
+  sources:
+    - " &7- Bazaar (&aI&7)"
+    - " &7- Regalia Room (&aI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+    - BOW
+#-------------------------------------------#
+#               Dragon Hunter               #
+#-------------------------------------------#
+DRAGON_HUNTER:
+  name: "Dragon Hunter"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 18
+      2: 36
+      3: 55
+      4: 79
+      5: 91
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases damage dealt to Ender Dragons by &a8%&7."
+    2: "&7Increases damage dealt to Ender Dragons by &a16%&7."
+    3: "&7Increases damage dealt to Ender Dragons by &a24%&7."
+    4: "&7Increases damage dealt to Ender Dragons by &a32%&7."
+    5: "&7Increases damage dealt to Ender Dragons by &a40%&7."
+  sources:
+    - " &7- Pearl Dealer (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 16
+#-------------------------------------------#
+#               Dragon Tracer               #
+#-------------------------------------------#
+DRAGON_TRACER:
+  name: "Dragon Tracer"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      4: 36
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Arrows home towards dragons if they are within &a2 &7blocks."
+    2: "&7Arrows home towards dragons if they are within &a4 &7blocks."
+    3: "&7Arrows home towards dragons if they are within &a6 &7blocks."
+    4: "&7Arrows home towards dragons if they are within &a8 &7blocks."
+    5: "&7Arrows home towards dragons if they are within &a10 &7blocks."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 8
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 8
+#-------------------------------------------#
+#                Efficiency                 #
+#-------------------------------------------#
+EFFICIENCY:
+  name: "Efficiency"
+  min-level: 1
+  max-level: 10
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 10
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Grants &6+30 ⸕ Mining Speed&7."
+    2: "&7Grants &6+50 ⸕ Mining Speed&7."
+    3: "&7Grants &6+70 ⸕ Mining Speed&7."
+    4: "&7Grants &6+90 ⸕ Mining Speed&7."
+    5: "&7Grants &6+110 ⸕ Mining Speed&7."
+    6: "&7Grants &6+130 ⸕ Mining Speed&7."
+    7: "&7Grants &6+150 ⸕ Mining Speed&7."
+    8: "&7Grants &6+170 ⸕ Mining Speed&7."
+    9: "&7Grants &6+190 ⸕ Mining Speed&7."
+    10: "&7Grants &6+210 ⸕ Mining Speed&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- &5Silex &7(&aVI-X&7)"
+  support-categories:
+    - TOOLS
+#-------------------------------------------#
+#                Ender Slayer               #
+#-------------------------------------------#
+ENDER_SLAYER:
+  name: "Ender Slayer"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 25
+      4: 30
+      5: 40
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 27
+      5: 36
+      6: 58
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a15%&7."
+    2: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a30%&7."
+    3: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a45%&7."
+    4: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a60%&7."
+    5: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a80%&7."
+    6: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a100%&7."
+    7: "&7Increases damage dealt to Shulker, Endermites, Endermen, and Ender Dragon by &a130%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Pearl Dealer (&aVI&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+    - " &7- Experiments (&aVII&7)"
+    - " &7- Voidgloom Seraph (&aVII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 11
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 5
+#-------------------------------------------#
+#                  Execute                  #
+#-------------------------------------------#
+EXECUTE:
+  name: "Execute"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Increases damage dealt by &a0.2% &7for each percent of health missing on your target."
+    2: "&7Increases damage dealt by &a0.4% &7for each percent of health missing on your target."
+    3: "&7Increases damage dealt by &a0.6% &7for each percent of health missing on your target."
+    4: "&7Increases damage dealt by &a0.8% &7for each percent of health missing on your target."
+    5: "&7Increases damage dealt by &a1% &7for each percent of health missing on your target."
+    6: "&7Increases damage dealt by &a1.25% &7for each percent of health missing on your target."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 14
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 10
+  conflicts:
+    - PROSECUTE
+#-------------------------------------------#
+#                Experience                 #
+#-------------------------------------------#
+EXPERIENCE:
+  name: "Experience"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 15
+      2: 30
+      3: 45
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 5
+    cost:
+      2: 27
+      3: 41
+      4: 58
+      5: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants a &a12.5% &7chance for mobs and ores to drop double experience."
+    2: "&7Grants a &a25% &7chance for mobs and ores to drop double experience."
+    3: "&7Grants a &a37.5% &7chance for mobs and ores to drop double experience."
+    4: "&7Grants a &a50% &7chance for mobs and ores to drop double experience."
+    5: "&7Grants a &a62.5% &7chance for mobs and ores to drop double experience."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Melancholic Viking (&aIV&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+    - " &7- Frozen Alex (&aV&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+    - PICKAXE
+    - DRILL
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 2
+#-------------------------------------------#
+#                 Expertise                 #
+#-------------------------------------------#
+EXPERTISE:
+  name: "Expertise"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 1
+    cost:
+      1: 24
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Grants &3+0.6 α Sea Creature Chance &7and &3+2 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&850 kills to tier up."
+    2: "&7Grants &3+1.2 α Sea Creature Chance &7and &3+4 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&8100 kills to tier up."
+    3: "&7Grants &3+1.8 α Sea Creature Chance &7and &3+6 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&8250 kills to tier up."
+    4: "&7Grants &3+2.4 α Sea Creature Chance &7and &3+8 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&8500 kills to tier up."
+    5: "&7Grants &3+3 α Sea Creature Chance &7and &3+10 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&81,000 kills to tier up."
+    6: "&7Grants &3+3.6 α Sea Creature Chance &7and &3+12 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&82,500 kills to tier up."
+    7: "&7Grants &3+4.2 α Sea Creature Chance &7and &3+14 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&85,500 kills to tier up."
+    8: "&7Grants &3+4.8 α Sea Creature Chance &7and &3+16 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&810,000 kills to tier up."
+    9: "&7Grants &3+5.4 α Sea Creature Chance &7and &3+18 ☯ Fishing Wisdom &7when killing Sea Creatures.\n\n&815,000 kills to tier up."
+    10: "&7Grants &3+6 α Sea Creature Chance &7and &3+20 ☯ Fishing Wisdom &7when killing Sea Creatures."
+  sources:
+    - " &7- Community Shop (&aI&7)"
+    - " &7- Bazaar (&aI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+#-------------------------------------------#
+#              Feather Falling              #
+#-------------------------------------------#
+FEATHER_FALLING:
+  name: "Feather Falling"
+  min-level: 1
+  max-level: 10
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 10
+    max-anvil-apply: 10
+    cost:
+      4: 23
+      5: 27
+      6: 55
+      7: 79
+      8: 91
+      9: 109
+      10: 127
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Increases how high you can fall before taking fall damage by &a1 &7and reduces fall damage by &a5%&7."
+    2: "&7Increases how high you can fall before taking fall damage by &a2 &7and reduces fall damage by &a10%&7."
+    3: "&7Increases how high you can fall before taking fall damage by &a3 &7and reduces fall damage by &a15%&7."
+    4: "&7Increases how high you can fall before taking fall damage by &a4 &7and reduces fall damage by &a20%&7."
+    5: "&7Increases how high you can fall before taking fall damage by &a5 &7and reduces fall damage by &a25%&7."
+    6: "&7Increases how high you can fall before taking fall damage by &a6 &7and reduces fall damage by &a30%&7."
+    7: "&7Increases how high you can fall before taking fall damage by &a7 &7and reduces fall damage by &a35%&7."
+    8: "&7Increases how high you can fall before taking fall damage by &a8 &7and reduces fall damage by &a40%&7."
+    9: "&7Increases how high you can fall before taking fall damage by &a9 &7and reduces fall damage by &a45%&7."
+    10: "&7Increases how high you can fall before taking fall damage by &a10 &7and reduces fall damage by &a50%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Catacombs (&aVI-X&7)"
+    - " &7- Bazaar (&aVI-X&7)"
+  support-categories:
+    - BOOTS
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 2
+#-------------------------------------------#
+#               Ferocious Mana              #
+#-------------------------------------------#
+FEROCIOUS_MANA:
+  name: "Ferocious Mana"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: 10
+    max-anvil-apply: 10
+    cost:
+      1: 27
+      2: 41
+      3: 55
+      4: 68
+      5: 82
+      6: 162
+      7: 214
+      8: 266
+      9: 318
+      10: 370
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &a0.05% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    2: "&7Gain &a0.1% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    3: "&7Gain &a0.15% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    4: "&7Gain &a0.2% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    5: "&7Gain &a0.25% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    6: "&7Gain &a0.3% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    7: "&7Gain &a0.35% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    8: "&7Gain &a0.4% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    9: "&7Gain &a0.45% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+    10: "&7Gain &a0.5% &7of &b✎ Mana &7used near you as &c⫽ Ferocity &7for &610 &7seconds, capping at &c50 ⫽ Ferocity&7."
+  sources:
+    - " &7- Kuudra (&aI-X&7)"
+    - " &7- Bazaar (&aI-X&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 22
+  conflicts:
+    - HARDENED_MANA
+    - STRONG_MANA
+    - MANA_VAMPIRE
+#-------------------------------------------#
+#               Fire Aspect                 #
+#-------------------------------------------#
+FIRE_ASPECT:
+  name: "Fire Aspect"
+  min-level: 1
+  max-level: 3
+  enchanting-table:
+    min-level: 1
+    max-level: 2
+    cost:
+      1: 15
+      2: 30
+  anvil:
+    max-anvil-combine: 2
+    max-anvil-apply: 3
+    cost:
+      1: 13
+      2: 27
+      3: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Ignites your enemies for &a3s&7, dealing &a3% &7of your damage per second."
+    2: "&7Ignites your enemies for &a4s&7, dealing &a6% &7of your damage per second."
+    3: "&7Ignites your enemies for &a4s&7, dealing &a9% &7of your damage per second."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Melancholic Viking (&aIV&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+    - " &7- Frozen Alex (&aV&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 2
+#-------------------------------------------#
+#               Fire Protection             #
+#-------------------------------------------#
+FIRE_PROTECTION:
+  name: "Fire Protection"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Grants &f+2 ❂ True Defense &7against fire and lava."
+    2: "&7Grants &f+4 ❂ True Defense &7against fire and lava."
+    3: "&7Grants &f+6 ❂ True Defense &7against fire and lava."
+    4: "&7Grants &f+8 ❂ True Defense &7against fire and lava."
+    5: "&7Grants &f+10 ❂ True Defense &7against fire and lava."
+    6: "&7Grants &f+12 ❂ True Defense &7against fire and lava."
+    7: "&7Grants &f+14 ❂ True Defense &7against fire and lava."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - ARMOR
+  conflicts:
+    - PROTECTION
+    - BLAST_PROTECTION
+    - PROJECTILE_PROTECTION
+#-------------------------------------------#
+#                First Strike                #
+#-------------------------------------------#
+FIRST_STRIKE:
+  name: "First Strike"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 4
+    cost:
+      1: 20
+      2: 30
+      3: 40
+      4: 75
+  anvil:
+    max-anvil-combine: 4
+    max-anvil-apply: 5
+    cost:
+      3: 36
+      4: 58
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases melee damage dealt by &a25% &7for the first hit on a mob."
+    2: "&7Increases melee damage dealt by &a50% &7for the first hit on a mob."
+    3: "&7Increases melee damage dealt by &a75% &7for the first hit on a mob."
+    4: "&7Increases melee damage dealt by &a100% &7for the first hit on a mob."
+    5: "&7Increases melee damage dealt by &a125% &7for the first hit on a mob."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aI-V&7)"
+    - " &7- Bazaar (&aV&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 10
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 5
+  conflicts:
+    - TRIPLE_STRIKE
+#-------------------------------------------#
+#                   Flame                   #
+#-------------------------------------------#
+FLAME:
+  name: "Flame"
+  min-level: 1
+  max-level: 2
+  enchanting-table:
+    min-level: 1
+    max-level: 2
+    cost:
+      1: 25
+      2: 50
+  anvil:
+    max-anvil-combine: 2
+    max-anvil-apply: 2
+    cost:
+      1: 23
+      2: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+  description:
+    1: "&7Arrows ignite your enemies for &a3.5s&7, dealing &a3% &7of your damage per second."
+    2: "&7Arrows ignite your enemies for &a4s&7, dealing &a6% &7of your damage per second."
+  sources:
+    - " &7- Enchantment Table (&aI-II&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+#-------------------------------------------#
+#                  Fortune                  #
+#-------------------------------------------#
+FORTUNE:
+  name: "Fortune"
+  min-level: 1
+  max-level: 4
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 15
+      2: 30
+      3: 45
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 4
+    cost:
+      2: 27
+      3: 41
+      4: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+  description:
+    1: "&7Grants &6+10 ☘ Mining Fortune&7, which increases your chance for multiple drops."
+    2: "&7Grants &6+20 ☘ Mining Fortune&7, which increases your chance for multiple drops."
+    3: "&7Grants &6+30 ☘ Mining Fortune&7, which increases your chance for multiple drops."
+    4: "&7Grants &6+45 ☘ Mining Fortune&7, which increases your chance for multiple drops."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Bazaar (&aIV&7)"
+    - " &7- Crystal Nucleus (&aIV&7)"
+  support-categories:
+    - PICKAXE
+    - DRILL
+    - GAUNTLET
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 2
+  conflicts:
+    - SILK_TOUCH
+#-------------------------------------------#
+#                   Frail                   #
+#-------------------------------------------#
+FRAIL:
+  name: "Frail"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 58
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Sea creatures start with &a2.5% &7reduced health."
+    2: "&7Sea creatures start with &a5% &7reduced health."
+    3: "&7Sea creatures start with &a7.5% &7reduced health."
+    4: "&7Sea creatures start with &a10% &7reduced health."
+    5: "&7Sea creatures start with &a12.5% &7reduced health."
+    6: "&7Sea creatures start with &a15% &7reduced health."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 14
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 12
+#-------------------------------------------#
+#               Frost Walker                #
+#-------------------------------------------#
+FROST_WALKER:
+  name: "Frost Walker"
+  min-level: 1
+  max-level: 2
+  enchanting-table:
+    min-level: 1
+    max-level: 2
+    cost:
+      1: 10
+      2: 20
+  anvil:
+    max-anvil-combine: 2
+    max-anvil-apply: 2
+    cost:
+      1: 10
+      2: 20
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+  description:
+    1: "&7Ice blocks will be created below you when you walk above water in a radius of &a1 &7blocks."
+    2: "&7Ice blocks will be created below you when you walk above water in a radius of &a2 &7blocks."
+  sources:
+    - " &7- Enchantment Table (&aI-II&7)"
+  support-categories:
+    - BOOTS
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+  conflicts:
+    - DEPTH_STRIDER
+#-------------------------------------------#
+#                Giant Killer               #
+#-------------------------------------------#
+GIANT_KILLER:
+  name: "Giant Killer"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases damage dealt by &a0.1% &7for each percent of extra health that your target has above you up to &a5%&7."
+    2: "&7Increases damage dealt by &a0.2% &7for each percent of extra health that your target has above you up to &a10%&7."
+    3: "&7Increases damage dealt by &a0.3% &7for each percent of extra health that your target has above you up to &a15%&7."
+    4: "&7Increases damage dealt by &a0.4% &7for each percent of extra health that your target has above you up to &a20%&7."
+    5: "&7Increases damage dealt by &a0.6% &7for each percent of extra health that your target has above you up to &a30%&7."
+    6: "&7Increases damage dealt by &a0.9% &7for each percent of extra health that your target has above you up to &a45%&7."
+    7: "&7Increases damage dealt by &a1.2% &7for each percent of extra health that your target has above you up to &a65%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 8
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 4
+  conflicts:
+    - TITAN_KILLER
+#-------------------------------------------#
+#                   Growth                  #
+#-------------------------------------------#
+GROWTH:
+  name: "Growth"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Grants &a+15 &c❤ Health&7."
+    2: "&7Grants &a+30 &c❤ Health&7."
+    3: "&7Grants &a+45 &c❤ Health&7."
+    4: "&7Grants &a+60 &c❤ Health&7."
+    5: "&7Grants &a+75 &c❤ Health&7."
+    6: "&7Grants &a+90 &c❤ Health&7."
+    7: "&7Grants &a+105 &c❤ Health&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Dark Auction (&aVI&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+    - " &7- Scorpius (&aVII&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 5
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 8
+#-------------------------------------------#
+#                Hardened Mana              #
+#-------------------------------------------#
+HARDENED_MANA:
+  name: "Hardened Mana"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: 10
+    max-anvil-apply: 10
+    cost:
+      1: 27
+      2: 41
+      3: 55
+      4: 68
+      5: 82
+      6: 162
+      7: 214
+      8: 266
+      9: 318
+      10: 370
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &a0.1% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    2: "&7Gain &a0.2% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    3: "&7Gain &a0.3% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    4: "&7Gain &a0.4% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    5: "&7Gain &a0.5% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    6: "&7Gain &a0.6% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    7: "&7Gain &a0.7% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    8: "&7Gain &a0.8% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    9: "&7Gain &a0.9% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+    10: "&7Gain &a1% &7of &b✎ Mana &7used near you as &a❈ Defense &7for &610 &7seconds, capping at &a400 ❈ Defense&7."
+  sources:
+    - " &7- Kuudra (&aI-X&7)"
+    - " &7- Bazaar (&aI-X&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 22
+  conflicts:
+    - FEROCIOUS_MANA
+    - STRONG_MANA
+    - MANA_VAMPIRE
+#-------------------------------------------#
+#                Harvesting                 #
+#-------------------------------------------#
+HARVESTING:
+  name: "Harvesting"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 5
+      2: 10
+      3: 15
+      4: 20
+      5: 25
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 18
+      5: 23
+      6: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Grants &6+12.5 ☘ Farming Fortune&7, which increases your chance for multiple crops."
+    2: "&7Grants &6+25 ☘ Farming Fortune&7, which increases your chance for multiple crops."
+    3: "&7Grants &6+37.5 ☘ Farming Fortune&7, which increases your chance for multiple crops."
+    4: "&7Grants &6+50 ☘ Farming Fortune&7, which increases your chance for multiple crops."
+    5: "&7Grants &6+62.5 ☘ Farming Fortune&7, which increases your chance for multiple crops."
+    6: "&7Grants &6+75 ☘ Farming Fortune&7, which increases your chance for multiple crops."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Shiny Pigs (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - HOE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 2
+#-------------------------------------------#
+#                  Impaling                 #
+#-------------------------------------------#
+IMPALING:
+  name: "Impaling"
+  min-level: 1
+  max-level: 3
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 30
+      2: 40
+      3: 50
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      2: 36
+      3: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Increases damage dealt to Sea Creatures by &a25%&7."
+    2: "&7Increases damage dealt to Sea Creatures by &a50%&7."
+    3: "&7Increases damage dealt to Sea Creatures by &a75%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - FISHING_ROD
+    - GAUNTLET
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 12
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 8
+#-------------------------------------------#
+#              Infinite Quiver              #
+#-------------------------------------------#
+INFINITE_QUIVER:
+  name: "Infinite Quiver"
+  min-level: 1
+  max-level: 10
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 10
+    max-anvil-apply: 10
+    cost:
+      4: 23
+      5: 27
+      6: 55
+      7: 79
+      8: 91
+      9: 109
+      10: 127
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Saves arrows &a3% &7of the time when you fire your bow. Disabled while sneaking."
+    2: "&7Saves arrows &a6% &7of the time when you fire your bow. Disabled while sneaking."
+    3: "&7Saves arrows &a9% &7of the time when you fire your bow. Disabled while sneaking."
+    4: "&7Saves arrows &a12% &7of the time when you fire your bow. Disabled while sneaking."
+    5: "&7Saves arrows &a15% &7of the time when you fire your bow. Disabled while sneaking."
+    6: "&7Saves arrows &a18% &7of the time when you fire your bow. Disabled while sneaking."
+    7: "&7Saves arrows &a21% &7of the time when you fire your bow. Disabled while sneaking."
+    8: "&7Saves arrows &a24% &7of the time when you fire your bow. Disabled while sneaking."
+    9: "&7Saves arrows &a27% &7of the time when you fire your bow. Disabled while sneaking."
+    10: "&7Saves arrows &a30% &7of the time when you fire your bow. Disabled while sneaking."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Catacombs (&aVI-X&7)"
+    - " &7- Bazaar (&aVI-X&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 2
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+#-------------------------------------------#
+#                 Knockback                 #
+#-------------------------------------------#
+KNOCKBACK:
+  name: "Knockback"
+  min-level: 1
+  max-level: 2
+  enchanting-table:
+    min-level: 1
+    max-level: 2
+    cost:
+      1: 15
+      2: 30
+  anvil:
+    max-anvil-combine: 2
+    max-anvil-apply: 2
+    cost:
+      1: 13
+      2: 27
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+  description:
+    1: "&7Increases knockback by &a3 &7blocks."
+    2: "&7Increases knockback by &a6 &7blocks."
+  sources:
+    - " &7- Enchantment Table (&aI-II&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 1
+#-------------------------------------------#
+#                 Lethality                 #
+#-------------------------------------------#
+LETHALITY:
+  name: "Lethality"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Reduces the &a❈ Defense &7of your target by &a1.2% &7for &64s &7each time you hit them with melee. Stacks up to &a4 &7times."
+    2: "&7Reduces the &a❈ Defense &7of your target by &a2.4% &7for &64s &7each time you hit them with melee. Stacks up to &a4 &7times."
+    3: "&7Reduces the &a❈ Defense &7of your target by &a3.6% &7for &64s &7each time you hit them with melee. Stacks up to &a4 &7times."
+    4: "&7Reduces the &a❈ Defense &7of your target by &a4.8% &7for &64s &7each time you hit them with melee. Stacks up to &a4 &7times."
+    5: "&7Reduces the &a❈ Defense &7of your target by &a6% &7for &64s &7each time you hit them with melee. Stacks up to &a4 &7times."
+    6: "&7Reduces the &a❈ Defense &7of your target by &a9% &7for &64s &7each time you hit them with melee. Stacks up to &a4 &7times."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Catacombs (&aVI&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 14
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 20
+#-------------------------------------------#
+#                Life Steal                 #
+#-------------------------------------------#
+LIFE_STEAL:
+  name: "Life Steal"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 20
+      2: 25
+      3: 30
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 5
+    cost:
+      2: 23
+      3: 27
+      4: 45
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Heals for &a0.5% &7of your max &c❤ Health &7each time you hit a mob."
+    2: "&7Heals for &a1% &7of your max &c❤ Health &7each time you hit a mob."
+    3: "&7Heals for &a1.5% &7of your max &c❤ Health &7each time you hit a mob."
+    4: "&7Heals for &a2% &7of your max &c❤ Health &7each time you hit a mob."
+    5: "&7Heals for &a2.5% &7of your max &c❤ Health &7each time you hit a mob."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Spooky Festival (&aIV&7)"
+    - " &7- Experiments (&aIV-V&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 5
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+  conflicts:
+    - SYPHON
+    - MANA_STEAL
+#-------------------------------------------#
+#                 Looting                   #
+#-------------------------------------------#
+LOOTING:
+  name: "Looting"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 15
+      2: 30
+      3: 45
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 5
+    cost:
+      2: 27
+      3: 41
+      4: 91
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases the chance of a Monster dropping an item by &a15%&7."
+    2: "&7Increases the chance of a Monster dropping an item by &a35%&7."
+    3: "&7Increases the chance of a Monster dropping an item by &a45%&7."
+    4: "&7Increases the chance of a Monster dropping an item by &a60%&7."
+    5: "&7Increases the chance of a Monster dropping an item by &a75%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Season of Jerry (&aIV&7)"
+    - " &7- Experiments (&aIV-V&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_ROD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 2
+#-------------------------------------------#
+#                    Luck                   #
+#-------------------------------------------#
+LUCK:
+  name: "Luck"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 58
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases the chance of Monsters to drop their armor by &a5%&7."
+    2: "&7Increases the chance of Monsters to drop their armor by &a10%&7."
+    3: "&7Increases the chance of Monsters to drop their armor by &a15%&7."
+    4: "&7Increases the chance of Monsters to drop their armor by &a20%&7."
+    5: "&7Increases the chance of Monsters to drop their armor by &a25%&7."
+    6: "&7Increases the chance of Monsters to drop their armor by &a30%&7."
+    7: "&7Increases the chance of Monsters to drop their armor by &a35%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Season of Jerry (&aVI&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 3
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+#-------------------------------------------#
+#              Luck of the Sea              #
+#-------------------------------------------#
+LUCK_OF_THE_SEA:
+  name: "Luck of the Sea"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      1: 9
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Increases the chance of fishing treasure by &a1%&7."
+    2: "&7Increases the chance of fishing treasure by &a2%&7."
+    3: "&7Increases the chance of fishing treasure by &a3%&7."
+    4: "&7Increases the chance of fishing treasure by &a4%&7."
+    5: "&7Increases the chance of fishing treasure by &a5%&7."
+    6: "&7Increases the chance of fishing treasure by &a6%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 1
+#-------------------------------------------#
+#                    Lure                   #
+#-------------------------------------------#
+LURE:
+  name: "Lure"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 23
+      5: 27
+      6: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Shortens the maximum time it takes to catch something by &a5%&7."
+    2: "&7Shortens the maximum time it takes to catch something by &a10%&7."
+    3: "&7Shortens the maximum time it takes to catch something by &a15%&7."
+    4: "&7Shortens the maximum time it takes to catch something by &a20%&7."
+    5: "&7Shortens the maximum time it takes to catch something by &a25%&7."
+    6: "&7Shortens the maximum time it takes to catch something by &a30%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+#-------------------------------------------#
+#                   Magnet                  #
+#-------------------------------------------#
+MAGNET:
+  name: "Magnet"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 58
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Grants &a1 &7additional experience orb every time you successfully catch a fish."
+    2: "&7Grants &a2 &7additional experience orb every time you successfully catch a fish."
+    3: "&7Grants &a3 &7additional experience orb every time you successfully catch a fish."
+    4: "&7Grants &a4 &7additional experience orb every time you successfully catch a fish."
+    5: "&7Grants &a5 &7additional experience orb every time you successfully catch a fish."
+    6: "&7Grants &a6 &7additional experience orb every time you successfully catch a fish."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 13
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 5
+#-------------------------------------------#
+#                 Mana Steal                #
+#-------------------------------------------#
+MANA_STEAL:
+  name: "Mana Steal"
+  min-level: 1
+  max-level: 3
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      1: 18
+      2: 23
+      3: 27
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Regain &a0.25% &7of your &b✎ Mana &7on hit."
+    2: "&7Regain &a0.5% &7of your &b✎ Mana &7on hit."
+    3: "&7Regain &a0.75% &7of your &b✎ Mana &7on hit."
+  sources:
+    - " &7- Voidgloom Seraph (&aI-III&7)"
+    - " &7- Bazaar (&aI-III&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 20
+#-------------------------------------------#
+#                Mana Vampire               #
+#-------------------------------------------#
+MANA_VAMPIRE:
+  name: "Mana Vampire"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: 10
+    max-anvil-apply: 10
+    cost:
+      1: 27
+      2: 41
+      3: 55
+      4: 68
+      5: 82
+      6: 162
+      7: 214
+      8: 266
+      9: 318
+      10: 370
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Heal for &a0.5% &7of &b✎ Mana &7used near you."
+    2: "&7Heal for &a1% &7of &b✎ Mana &7used near you."
+    3: "&7Heal for &a1.5% &7of &b✎ Mana &7used near you."
+    4: "&7Heal for &a2% &7of &b✎ Mana &7used near you."
+    5: "&7Heal for &a2.5% &7of &b✎ Mana &7used near you."
+    6: "&7Heal for &a3% &7of &b✎ Mana &7used near you."
+    7: "&7Heal for &a3.5% &7of &b✎ Mana &7used near you."
+    8: "&7Heal for &a4% &7of &b✎ Mana &7used near you."
+    9: "&7Heal for &a4.5% &7of &b✎ Mana &7used near you."
+    10: "&7Heal for &a5% &7of &b✎ Mana &7used near you."
+  sources:
+    - " &7- Kuudra (&aI-X&7)"
+    - " &7- Bazaar (&aI-X&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 22
+  conflicts:
+    - FEROCIOUS_MANA
+    - STRONG_MANA
+    - HARDENED_MANA
+#-------------------------------------------#
+#                  Overload                 #
+#-------------------------------------------#
+OVERLOAD:
+  name: "Overload"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 45
+      2: 91
+      3: 136
+      4: 179
+      5: 223
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases &9☠ Crit Damage &7by &a1% &7and &9☣ Crit Chance &7by &a1%&7. Having a Critical chance above &9100% &7grants a chance to perform a Mega Critical Hit dealing &910% &7extra damage."
+    2: "&7Increases &9☠ Crit Damage &7by &a2% &7and &9☣ Crit Chance &7by &a2%&7. Having a Critical chance above &9100% &7grants a chance to perform a Mega Critical Hit dealing &920% &7extra damage."
+    3: "&7Increases &9☠ Crit Damage &7by &a3% &7and &9☣ Crit Chance &7by &a3%&7. Having a Critical chance above &9100% &7grants a chance to perform a Mega Critical Hit dealing &930% &7extra damage."
+    4: "&7Increases &9☠ Crit Damage &7by &a4% &7and &9☣ Crit Chance &7by &a4%&7. Having a Critical chance above &9100% &7grants a chance to perform a Mega Critical Hit dealing &940% &7extra damage."
+    5: "&7Increases &9☠ Crit Damage &7by &a5% &7and &9☣ Crit Chance &7by &a5%&7. Having a Critical chance above &9100% &7grants a chance to perform a Mega Critical Hit dealing &950% &7extra damage."
+  sources:
+    - " &7- Catacombs (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 33
+#-------------------------------------------#
+#                  Piercing                 #
+#-------------------------------------------#
+PIERCING:
+  name: "Piercing"
+  min-level: 1
+  max-level: 1
+  enchanting-table:
+    min-level: 1
+    max-level: 1
+    cost:
+      1: 30
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 1
+    cost:
+      1: 27
+  rarities:
+    1: "COMMON"
+  description:
+    1: "&7Arrows travel through enemies. The extra targets hit take &a25% &7of the damage."
+  sources:
+    - " &7- Enchantment Table (&aI&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 17
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 20
+#-------------------------------------------#
+#                  Piscary                  #
+#-------------------------------------------#
+PISCARY:
+  name: "Piscary"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 8
+      2: 16
+      3: 24
+      4: 36
+      5: 48
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 6
+    cost:
+      6: 55
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Grants &b+1 ☂ Fishing Speed&7."
+    2: "&7Grants &b+2 ☂ Fishing Speed&7."
+    3: "&7Grants &b+3 ☂ Fishing Speed&7."
+    4: "&7Grants &b+4 ☂ Fishing Speed&7."
+    5: "&7Grants &b+5 ☂ Fishing Speed&7."
+    6: "&7Grants &b+6 ☂ Fishing Speed&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 8
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 6
+#-------------------------------------------#
+#                   Power                   #
+#-------------------------------------------#
+POWER:
+  name: "Power"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases bow damage by &a8%&7."
+    2: "&7Increases bow damage by &a16%&7."
+    3: "&7Increases bow damage by &a24%&7."
+    4: "&7Increases bow damage by &a32%&7."
+    5: "&7Increases bow damage by &a40%&7."
+    6: "&7Increases bow damage by &a50%&7."
+    7: "&7Increases bow damage by &a65%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Dark Auction (&aVI&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+    - " &7- Scorpius (&aVII&7)"
+  support-categories:
+    - BOW
+#-------------------------------------------#
+#            Projectile Protection          #
+#-------------------------------------------#
+PROJECTILE_PROTECTION:
+  name: "Projectile Protection"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Grants &a+7 ❈ Defense &7against projectiles."
+    2: "&7Grants &a+14 ❈ Defense &7against projectiles."
+    3: "&7Grants &a+21 ❈ Defense &7against projectiles."
+    4: "&7Grants &a+28 ❈ Defense &7against projectiles."
+    5: "&7Grants &a+35 ❈ Defense &7against projectiles."
+    6: "&7Grants &a+42 ❈ Defense &7against projectiles."
+    7: "&7Grants &a+49 ❈ Defense &7against projectiles."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - ARMOR
+  conflicts:
+    - PROTECTION
+    - BLAST_PROTECTION
+    - FIRE_PROTECTION
+#-------------------------------------------#
+#                 Prosecute                 #
+#-------------------------------------------#
+PROSECUTE:
+  name: "Prosecute"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Increases damage dealt by &a0.1% &7for each percent of &c❤ Health &7your target has."
+    2: "&7Increases damage dealt by &a0.2% &7for each percent of &c❤ Health &7your target has."
+    3: "&7Increases damage dealt by &a0.3% &7for each percent of &c❤ Health &7your target has."
+    4: "&7Increases damage dealt by &a0.4% &7for each percent of &c❤ Health &7your target has."
+    5: "&7Increases damage dealt by &a0.7% &7for each percent of &c❤ Health &7your target has."
+    6: "&7Increases damage dealt by &a1% &7for each percent of &c❤ Health &7your target has."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aV-VI&7)"
+    - " &7- Bazaar (&aV-VI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 25
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 12
+  conflicts:
+    - EXECUTE
+#-------------------------------------------#
+#                Prosperity                 #
+#-------------------------------------------#
+PROSPERITY:
+  name: "Prosperity"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 91
+      2: 91
+      3: 91
+      4: 91
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &c+3 ❤ Health&7."
+    2: "&7Grants &c+6 ❤ Health&7."
+    3: "&7Grants &c+9 ❤ Health&7."
+    4: "&7Grants &c+12 ❤ Health&7."
+    5: "&7Grants &c+15 ❤ Health&7."
+  sources:
+    - " &7- Fishing (&aI&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - GLOVES
+    - BELT
+    - NECKLACE
+    - BRACELET
+    - CLOAK
+#-------------------------------------------#
+#                 Protection                #
+#-------------------------------------------#
+PROTECTION:
+  name: "Protection"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Grants &a+4 ❈ Defense&7."
+    2: "&7Grants &a+8 ❈ Defense&7."
+    3: "&7Grants &a+12 ❈ Defense&7."
+    4: "&7Grants &a+16 ❈ Defense&7."
+    5: "&7Grants &a+20 ❈ Defense&7."
+    6: "&7Grants &a+25 ❈ Defense&7."
+    7: "&7Grants &a+30 ❈ Defense&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Dark Auction (&aVI&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+    - " &7- Scorpius (&aVII&7)"
+  support-categories:
+    - ARMOR
+  conflicts:
+    - PROJECTILE_PROTECTION
+    - BLAST_PROTECTION
+    - FIRE_PROTECTION
+#-------------------------------------------#
+#                   Punch                   #
+#-------------------------------------------#
+PUNCH:
+  name: "Punch"
+  min-level: 1
+  max-level: 2
+  enchanting-table:
+    min-level: 1
+    max-level: 2
+    cost:
+      1: 15
+      2: 30
+  anvil:
+    max-anvil-combine: 2
+    max-anvil-apply: 2
+    cost:
+      1: 13
+      2: 27
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+  description:
+    1: "&7Increases arrow knockback by &a3 &7blocks."
+    2: "&7Increases arrow knockback by &a6 &7blocks."
+  sources:
+    - " &7- Enchantment Table (&aI-II&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 2
+#-------------------------------------------#
+#                  Quantum                  #
+#-------------------------------------------#
+QUANTUM:
+  name: "Quantum"
+  min-level: 3
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      3: 45
+      4: 45
+      5: 91
+  rarities:
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    3: "&7Grants &4+2.4 ♨ Vitality &7on weekdays and &3+1.2 ☯ &7of a random Wisdom stat on weekends."
+    4: "&7Grants &4+3.2 ♨ Vitality &7on weekdays and &3+1.6 ☯ &7of a random Wisdom stat on weekends."
+    5: "&7Grants &4+4 ♨ Vitality &7on weekdays and &3+2 ☯ &7of a random Wisdom stat on weekends."
+  sources:
+    - " &7- Riftstalker Bloodfiend (&aIII&7)"
+    - " &7- Bazaar (&aIII-V&7)"
+  support-categories:
+    - NECKLACE
+#-------------------------------------------#
+#                 Rainbow                   #
+#-------------------------------------------#
+RAINBOW:
+  name: "Rainbow"
+  min-level: 1
+  max-level: 3
+  enchanting-table:
+    min-level: 1
+    max-level: 1
+    cost:
+      1: 10
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 3
+    cost:
+      1: 9
+      2: 0
+      3: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Causes sheep to drop a random wool color when sheared."
+    2: "&7Grants a &a50% &7chance to change the color of a sheep when shearing it."
+    3: "&7Grants a &a80% &7chance to change the color of a sheep when shearing it."
+  sources:
+    - " &7- Enchantment Table (&aI&7)"
+    - " &7- Mollim (&aII&7)"
+    - " &7- Raffle of the Century (&aIII&7)"
+  support-categories:
+    - SHEARS
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 6
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 1
+#-------------------------------------------#
+#                Reflection                 #
+#-------------------------------------------#
+REFLECTION:
+  name: "Reflection"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 18
+      2: 36
+      3: 55
+      4: 79
+      5: 91
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &b+2 ✎ Intelligence&7.\nGrants &f+1 ❂ True Defense&7.\nWhen damaged by an arrow, deal &b2x &7your &b✎ Intelligence &7to its shooter."
+    2: "&7Grants &b+4 ✎ Intelligence&7.\nGrants &f+2 ❂ True Defense&7.\nWhen damaged by an arrow, deal &b5x &7your &b✎ Intelligence &7to its shooter."
+    3: "&7Grants &b+5 ✎ Intelligence&7.\nGrants &f+3 ❂ True Defense&7.\nWhen damaged by an arrow, deal &b10x &7your &b✎ Intelligence &7to its shooter."
+    4: "&7Grants &b+8 ✎ Intelligence&7.\nGrants &f+4 ❂ True Defense&7.\nWhen damaged by an arrow, deal &b20x &7your &b✎ Intelligence &7to its shooter."
+    5: "&7Grants &b+19 ✎ Intelligence&7.\nGrants &f+5 ❂ True Defense&7.\nWhen damaged by an arrow, deal &b30x &7your &b✎ Intelligence &7to its shooter."
+  sources:
+    - " &7- Rift Mirrorverse (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - CHESTPLATE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 6
+  conflicts:
+    - THORNS
+#-------------------------------------------#
+#                Rejuvenate                 #
+#-------------------------------------------#
+REJUVENATE:
+  name: "Rejuvenate"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 36
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &c+2 ❣ Health Regen&7."
+    2: "&7Grants &c+4 ❣ Health Regen&7."
+    3: "&7Grants &c+6 ❣ Health Regen&7."
+    4: "&7Grants &c+8 ❣ Health Regen&7."
+    5: "&7Grants &c+10 ❣ Health Regen&7."
+  sources:
+    - " &7- Catacombs (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 10
+  conflicts:
+    - RESPITE
+#-------------------------------------------#
+#                 Replenish                 #
+#-------------------------------------------#
+REPLENISH:
+  name: "Replenish"
+  min-level: 1
+  max-level: 1
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 1
+    cost:
+      1: 45
+  rarities:
+    1: "COMMON"
+  description:
+    1: "&7Upon breaking crops, nether wart, or cocoa, automatically replant from materials in your inventory."
+  sources:
+    - " &7- Bazaar (&aI&7)"
+    - " &7- Cocoa Beans Collection (&aI&7)"
+  support-categories:
+    - AXE
+    - HOE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 7
+#-------------------------------------------#
+#                Respiration                #
+#-------------------------------------------#
+RESPIRATION:
+  name: "Respiration"
+  min-level: 1
+  max-level: 3
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 10
+      2: 20
+      3: 30
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 4
+    cost:
+      2: 18
+      3: 27
+      4: 36
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+  description:
+    1: "&7Extends your underwater breathing time by &a15s&7."
+    2: "&7Extends your underwater breathing time by &a30s&7."
+    3: "&7Extends your underwater breathing time by &a45s&7."
+    4: "&7Extends your underwater breathing time by &a60s&7."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+  support-categories:
+    - HELMET
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 1
+#-------------------------------------------#
+#                  Respite                  #
+#-------------------------------------------#
+RESPITE:
+  name: "Respite"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 36
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &c+5 ❣ Health Regen &7while out of combat."
+    2: "&7Grants &c+10 ❣ Health Regen &7while out of combat."
+    3: "&7Grants &c+15 ❣ Health Regen &7while out of combat."
+    4: "&7Grants &c+20 ❣ Health Regen &7while out of combat."
+    5: "&7Grants &c+25 ❣ Health Regen &7while out of combat."
+  sources:
+    - " &7- Experiments (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 23
+  conflicts:
+    - REJUVENATE
+#-------------------------------------------#
+#                 Scavenger                 #
+#-------------------------------------------#
+SCAVENGER:
+  name: "Scavenger"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 10
+      2: 20
+      3: 30
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 6
+    cost:
+      1: 10
+      2: 18
+      3: 27
+      4: 36
+      5: 45
+      6: 58
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Scavenge &60.3 Coins &7per monster level on kill."
+    2: "&7Scavenge &60.6 Coins &7per monster level on kill."
+    3: "&7Scavenge &60.9 Coins &7per monster level on kill."
+    4: "&7Scavenge &61.2 Coins &7per monster level on kill."
+    5: "&7Scavenge &61.5 Coins &7per monster level on kill."
+    6: "&7Scavenge &61.8 Coins &7per monster level on kill."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Season of Jerry (&aIV&7)"
+    - " &7- Experiments (&aIV-V&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+    - " &7- Catacombs (&aV&7)"
+    - " &7- &6Golden Bounty &7(&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 1
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+#-------------------------------------------#
+#                 Sharpness                 #
+#-------------------------------------------#
+SHARPNESS:
+  name: "Sharpness"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases melee damage dealt by &a5%&7."
+    2: "&7Increases melee damage dealt by &a10%&7."
+    3: "&7Increases melee damage dealt by &a15%&7."
+    4: "&7Increases melee damage dealt by &a20%&7."
+    5: "&7Increases melee damage dealt by &a30%&7."
+    6: "&7Increases melee damage dealt by &a45%&7."
+    7: "&7Increases melee damage dealt by &a65%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Dark Auction (&aVI&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+    - " &7- Scorpius (&aVII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  conflicts:
+    - BANE_OF_ARTHROPODS
+    - SMITE
+#-------------------------------------------#
+#                 Silk Touch                #
+#-------------------------------------------#
+SILK_TOUCH:
+  name: "Silk Touch"
+  min-level: 1
+  max-level: 1
+  enchanting-table:
+    min-level: 1
+    max-level: 1
+    cost:
+      1: 10
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 1
+    cost:
+      1: 9
+  rarities:
+    1: "COMMON"
+  description:
+    1: "&7Allows you to collect normally unobtainable block drops."
+  sources:
+    - " &7- Enchantment Table (&aI&7)"
+  support-categories:
+    - TOOLS
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 5
+  conflicts:
+    - FORTUNE
+    - SMELTING_TOUCH
+#-------------------------------------------#
+#                Smarty Pants               #
+#-------------------------------------------#
+SMARTY_PANTS:
+  name: "Smarty Pants"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 18
+      2: 36
+      3: 55
+      4: 79
+      5: 91
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &b+5 ✎ Intelligence&7."
+    2: "&7Grants &b+10 ✎ Intelligence&7."
+    3: "&7Grants &b+15 ✎ Intelligence&7."
+    4: "&7Grants &b+20 ✎ Intelligence&7."
+    5: "&7Grants &b+25 ✎ Intelligence&7."
+  sources:
+    - " &7- Voidgloom Seraph (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - LEGGINGS
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 21
+#-------------------------------------------#
+#               Smelting Touch              #
+#-------------------------------------------#
+SMELTING_TOUCH:
+  name: "Smelting Touch"
+  min-level: 1
+  max-level: 1
+  enchanting-table:
+    min-level: 1
+    max-level: 1
+    cost:
+      1: 5
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 1
+    cost:
+      1: 5
+  rarities:
+    1: "COMMON"
+  description:
+    1: "&7Automatically smelts broken blocks into their smelted form."
+  sources:
+    - " &7- Enchantment Table (&aI&7)"
+  support-categories:
+    - SHOVEL
+    - PICKAXE
+    - AXE
+    - DRILL
+    - HOE
+    - GAUNTLET
+  conflicts:
+    - SILK_TOUCH
+#-------------------------------------------#
+#                   Smite                   #
+#-------------------------------------------#
+SMITE:
+  name: "Smite"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 15
+      3: 20
+      4: 25
+      5: 30
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      1: 10
+      2: 13
+      3: 18
+      4: 23
+      5: 27
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a10%&7."
+    2: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a20%&7."
+    3: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a30%&7."
+    4: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a40%&7."
+    5: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a60%&7."
+    6: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a80%&7."
+    7: "&7Increases damage dealt to Drowned, Husks, Phantoms, Skeletons, Skeleton Horses, Strays, Withers, Wither Skeletons, Zoglins, Zombies, Zombie Horses, Zombie Villagers, and Zombified Piglins by &a100%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Revenant Horror (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+    - " &7- Catacombs (&aVII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  conflicts:
+    - BANE_OF_ARTHROPODS
+    - SHARPNESS
+#-------------------------------------------#
+#                Smoldering                 #
+#-------------------------------------------#
+SMOLDERING:
+  name: "Smoldering"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 36
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases damage dealt to Blazes, Ghasts, Hoglins, Magma Cubes, Piglins, Piglin Brutes, Wither Skeletons, Zoglins, Zombified Piglins by &a3%&7."
+    2: "&7Increases damage dealt to Blazes, Ghasts, Hoglins, Magma Cubes, Piglins, Piglin Brutes, Wither Skeletons, Zoglins, Zombified Piglins by &a6%&7."
+    3: "&7Increases damage dealt to Blazes, Ghasts, Hoglins, Magma Cubes, Piglins, Piglin Brutes, Wither Skeletons, Zoglins, Zombified Piglins by &a9%&7."
+    4: "&7Increases damage dealt to Blazes, Ghasts, Hoglins, Magma Cubes, Piglins, Piglin Brutes, Wither Skeletons, Zoglins, Zombified Piglins by &a12%&7."
+    5: "&7Increases damage dealt to Blazes, Ghasts, Hoglins, Magma Cubes, Piglins, Piglin Brutes, Wither Skeletons, Zoglins, Zombified Piglins by &a15%&7."
+  sources:
+    - " &7- Smoldering Blazes (&aI&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 23
+#-------------------------------------------#
+#                  Snipe                    #
+#-------------------------------------------#
+SNIPE:
+  name: "Snipe"
+  min-level: 1
+  max-level: 4
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 20
+      2: 25
+      3: 30
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 5
+    cost:
+      2: 23
+      3: 27
+      4: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+  description:
+    1: "&7Arrows deal &a+1% &7damage for every &610 &7blocks traveled."
+    2: "&7Arrows deal &a+2% &7damage for every &610 &7blocks traveled."
+    3: "&7Arrows deal &a+3% &7damage for every &610 &7blocks traveled."
+    4: "&7Arrows deal &a+4% &7damage for every &610 &7blocks traveled."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Experiments (&aIV&7)"
+    - " &7- Bazaar (&aIV&7)"
+  support-categories:
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 6
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 8
+#-------------------------------------------#
+#                Spiked Hook                #
+#-------------------------------------------#
+SPIKED_HOOK:
+  name: "Spiked Hook"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 58
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Fishing rod deals &a5% &7more damage to monsters."
+    2: "&7Fishing rod deals &a10% &7more damage to monsters."
+    3: "&7Fishing rod deals &a15% &7more damage to monsters."
+    4: "&7Fishing rod deals &a20% &7more damage to monsters."
+    5: "&7Fishing rod deals &a25% &7more damage to monsters."
+    6: "&7Fishing rod deals &a30% &7more damage to monsters."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Fishing (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - FISHING_ROD
+    - FISHING_WEAPON
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 18
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 20
+#-------------------------------------------#
+#                Strong Mana                #
+#-------------------------------------------#
+STRONG_MANA:
+  name: "Strong Mana"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: 10
+    max-anvil-apply: 10
+    cost:
+      1: 27
+      2: 41
+      3: 55
+      4: 68
+      5: 82
+      6: 162
+      7: 214
+      8: 266
+      9: 318
+      10: 370
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &a0.1% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    2: "&7Gain &a0.2% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    3: "&7Gain &a0.3% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    4: "&7Gain &a0.4% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    5: "&7Gain &a0.5% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    6: "&7Gain &a0.6% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    7: "&7Gain &a0.7% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    8: "&7Gain &a0.8% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    9: "&7Gain &a0.9% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+    10: "&7Gain &a1% &7of &b✎ Mana &7used near you as &c❁ Strength &7for &610 &7seconds, capping at &c100 ❁ Strength&7."
+  sources:
+    - " &7- Kuudra (&aI-X&7)"
+    - " &7- Bazaar (&aI-X&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 22
+  conflicts:
+    - FEROCIOUS_MANA
+    - MANA_VAMPIRE
+    - HARDENED_MANA
+#-------------------------------------------#
+#                Sugar Rush                 #
+#-------------------------------------------#
+SUGAR_RUSH:
+  name: "Sugar Rush"
+  min-level: 1
+  max-level: 3
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      1: 18
+      2: 23
+      3: 27
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Grants &f+2 ✦ Speed&7."
+    2: "&7Grants &f+4 ✦ Speed&7."
+    3: "&7Grants &f+6 ✦ Speed&7."
+  sources:
+    - " &7- Spooky Festival (&aI-III&7)"
+    - " &7- Bazaar (&aI-III&7)"
+  support-categories:
+    - BOOTS
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 7
+#-------------------------------------------#
+#                   Sunder                  #
+#-------------------------------------------#
+SUNDER:
+  name: "Sunder"
+  min-level: 1
+  max-level: 6
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      1: 5
+      2: 9
+      3: 13
+      4: 18
+      5: 23
+      6: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Grants &a+12.5 &6☘ Farming Fortune&7, which increases your chance for multiple crops."
+    2: "&7Grants &a+25 &6☘ Farming Fortune&7, which increases your chance for multiple crops."
+    3: "&7Grants &a+37.5 &6☘ Farming Fortune&7, which increases your chance for multiple crops."
+    4: "&7Grants &a+50 &6☘ Farming Fortune&7, which increases your chance for multiple crops."
+    5: "&7Grants &a+62.5 &6☘ Farming Fortune&7, which increases your chance for multiple crops."
+    6: "&7Grants &a+75 &6☘ Farming Fortune&7, which increases your chance for multiple crops."
+  sources:
+    - " &7- SkyMart (&aI&7)"
+    - " &7- Bazaar (&aI-VI&7)"
+    - " &7- &6Locust Pests &7(&aVI&7)"
+  support-categories:
+    - AXE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 2
+#-------------------------------------------#
+#                   Syphon                  #
+#-------------------------------------------#
+SYPHON:
+  name: "Syphon"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 20
+      2: 25
+      3: 30
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 5
+    cost:
+      1: 18
+      2: 23
+      3: 27
+      4: 45
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Heals for &a0.2% &7of your max health per &9100 ☠ Crit Damage &7you deal per hit, up to &91,000 ☠ Crit Damage&7."
+    2: "&7Heals for &a0.3% &7of your max health per &9100 ☠ Crit Damage &7you deal per hit, up to &91,000 ☠ Crit Damage&7."
+    3: "&7Heals for &a0.4% &7of your max health per &9100 ☠ Crit Damage &7you deal per hit, up to &91,000 ☠ Crit Damage&7."
+    4: "&7Heals for &a0.5% &7of your max health per &9100 ☠ Crit Damage &7you deal per hit, up to &91,000 ☠ Crit Damage&7."
+    5: "&7Heals for &a0.6% &7of your max health per &9100 ☠ Crit Damage &7you deal per hit, up to &91,000 ☠ Crit Damage&7."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+    - " &7- Experiments (&aI-V&7)"
+    - " &7- Bazaar (&aIV-V&7)"
+    - " &7- Vargul (&aV&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 15
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 5
+  conflicts:
+    - LIFE_STEAL
+    - MANA_STEAL
+#-------------------------------------------#
+#                  Tabasco                  #
+#-------------------------------------------#
+TABASCO:
+  name: "Tabasco"
+  min-level: 2
+  max-level: 3
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      2: 0
+      3: 0
+  rarities:
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    2: "&7Grants &c+2 &7weapon damage if you don't have a &5Dragon &7per equipped."
+    3: "&7Grants &c+3 &7weapon damage if you don't have a &5Dragon &7per equipped."
+  sources:
+    - " &7- Bazaar (&aII-III&7)"
+    - " &7- Chili Pepper Collection (&aII-III&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_ROD
+    - FISHING_WEAPON
+    - GAUNTLET
+    - BOW
+    - AXE
+#-------------------------------------------#
+#                  Thorns                   #
+#-------------------------------------------#
+THORNS:
+  name: "Thorns"
+  min-level: 1
+  max-level: 3
+  enchanting-table:
+    min-level: 1
+    max-level: 3
+    cost:
+      1: 15
+      2: 30
+      3: 45
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 3
+    cost:
+      2: 27
+      3: 41
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+  description:
+    1: "&7Grants a &a50% &7chance to rebound &a3% &7of damage dealt back at the attacker."
+    2: "&7Grants a &a50% &7chance to rebound &a6% &7of damage dealt back at the attacker."
+    3: "&7Grants a &a50% &7chance to rebound &a9% &7of damage dealt back at the attacker."
+  sources:
+    - " &7- Enchantment Table (&aI-III&7)"
+  support-categories:
+    - ARMOR
+  requirements:
+    1:
+      type: "BOOKSHELF_POWER"
+      amount: 3
+  conflicts:
+    - REFLECTION
+#-------------------------------------------#
+#                Thunderbolt                #
+#-------------------------------------------#
+THUNDERBOLT:
+  name: "Thunderbolt"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a4% &7of the hit's damage to up to &610 &7monsters within &62 &7blocks."
+    2: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a8% &7of the hit's damage to up to &610 &7monsters within &62 &7blocks."
+    3: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a12% &7of the hit's damage to up to &610 &7monsters within &62 &7blocks."
+    4: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a16% &7of the hit's damage to up to &610 &7monsters within &62 &7blocks."
+    5: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a20% &7of the hit's damage to up to &610 &7monsters within &62 &7blocks."
+    6: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a25% &7of the hit's damage to up to &610 &7monsters within &62 &7blocks."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aI-VI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 20
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 15
+  conflicts:
+    - THUNDERLORD
+#-------------------------------------------#
+#                Thunderlord                #
+#-------------------------------------------#
+THUNDERLORD:
+  name: "Thunderlord"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 3
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 179
+      7: 0
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a8% &7of the hit's damage."
+    2: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a16% &7of the hit's damage."
+    3: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a24% &7of the hit's damage."
+    4: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a32% &7of the hit's damage."
+    5: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a40% &7of the hit's damage."
+    6: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a50% &7of the hit's damage."
+    7: "&7Every &c3 &7hits on a monster, strike &elightning&7, dealing &a60% &7of the hit's damage."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Catacombs (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 14
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 12
+  conflicts:
+    - THUNDERBOLT
+#-------------------------------------------#
+#               Titan Killer                #
+#-------------------------------------------#
+TITAN_KILLER:
+  name: "Titan Killer"
+  min-level: 1
+  max-level: 7
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 10
+      2: 20
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 7
+    cost:
+      4: 36
+      5: 45
+      6: 91
+      7: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+  description:
+    1: "&7Increases damage dealt by &a2% &7for every &a100 ❈ Defense &7your target has up to &a6%&7."
+    2: "&7Increases damage dealt by &a4% &7for every &a100 ❈ Defense &7your target has up to &a12%&7."
+    3: "&7Increases damage dealt by &a6% &7for every &a100 ❈ Defense &7your target has up to &a18%&7."
+    4: "&7Increases damage dealt by &a8% &7for every &a100 ❈ Defense &7your target has up to &a24%&7."
+    5: "&7Increases damage dealt by &a12% &7for every &a100 ❈ Defense &7your target has up to &a40%&7."
+    6: "&7Increases damage dealt by &a16% &7for every &a100 ❈ Defense &7your target has up to &a60%&7."
+    7: "&7Increases damage dealt by &a20% &7for every &a100 ❈ Defense &7your target has up to &a80%&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI-VII&7)"
+    - " &7- Bazaar (&aVI-VII&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 28
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 6
+  conflicts:
+    - GIANT_KILLER
+#-------------------------------------------#
+#               Toxophilite                 #
+#-------------------------------------------#
+TOXOPHILITE:
+  name: "Toxophilite"
+  min-level: 1
+  max-level: 10
+  anvil:
+    max-anvil-combine: -1
+    max-anvil-apply: 1
+    cost:
+      1: 25
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+    7: "EPIC"
+    8: "LEGENDARY"
+    9: "MYTHIC"
+    10: "MYTHIC"
+  description:
+    1: "&7Gain &a+3% &7extra CombatXP. Grants &9+3.7☣ Crit Chance.\nGain &a50,000 Combat XP to tier up."
+    2: "&7Gain &a+4% &7extra CombatXP. Grants &9+4.4☣ Crit Chance.\nGain &a100,000 Combat XP to tier up."
+    3: "&7Gain &a+4% &7extra CombatXP. Grants &9+5.1☣ Crit Chance.\nGain &a250,000 Combat XP to tier up."
+    4: "&7Gain &a+5% &7extra CombatXP. Grants &9+5.8☣ Crit Chance.\nGain &a500,000 Combat XP to tier up."
+    5: "&7Gain &a+6% &7extra CombatXP. Grants &9+6.5☣ Crit Chance.\nGain &a1,000,000 Combat XP to tier up."
+    6: "&7Gain &a+7% &7extra CombatXP. Grants &9+7.2☣ Crit Chance.\nGain &a1,500,000 Combat XP to tier up."
+    7: "&7Gain &a+8% &7extra CombatXP. Grants &9+7.9☣ Crit Chance.\nGain &a2,000,000 Combat XP to tier up."
+    8: "&7Gain &a+8% &7extra CombatXP. Grants &9+8.6☣ Crit Chance.\nGain &a2,500,000 Combat XP to tier up."
+    9: "&7Gain &a+9% &7extra CombatXP. Grants &9+9.3☣ Crit Chance.\nGain &a3,000,000 Combat XP to tier up."
+    10: "&7Gain &a+10% &7extra CombatXP. Grants &9+10☣ Crit Chance."
+  sources:
+    - " &7- Community Shop (&aI&7)"
+    - " &7- Bazaar (&aI&7)"
+  support-categories:
+    - BOW
+#-------------------------------------------#
+#               Transylvanian               #
+#-------------------------------------------#
+TRANSYLVANIAN:
+  name: "Transylvanian"
+  min-level: 4
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      4: 91
+      5: 179
+  rarities:
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    4: "&7Heal &c+2 ❤ Health&7/s per enemy within &a10 &7blocks, up to &c+20 ❤ Health&7/s."
+    5: "&7Heal &c+3 ❤ Health&7/s per enemy within &a10 &7blocks, up to &c+30 ❤ Health&7/s."
+  sources:
+    - " &7- Bazaar (&aIV-V&7)"
+    - " &7- Hemovibe Collection (&aIV-V&7)"
+  support-categories:
+    - HELMET
+#-------------------------------------------#
+#               Triple-Strike               #
+#-------------------------------------------#
+TRIPLE_STRIKE:
+  name: "Triple-Strike"
+  min-level: 1
+  max-level: 5
+  enchanting-table:
+    min-level: 1
+    max-level: 4
+    cost:
+      1: 20
+      2: 30
+      3: 40
+      4: 75
+  anvil:
+    max-anvil-combine: 4
+    max-anvil-apply: 5
+    cost:
+      3: 36
+      4: 58
+      5: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Increases melee damage dealt by &a10% &7for the first three hits on a mob."
+    2: "&7Increases melee damage dealt by &a20% &7for the first three hits on a mob."
+    3: "&7Increases melee damage dealt by &a30% &7for the first three hits on a mob."
+    4: "&7Increases melee damage dealt by &a40% &7for the first three hits on a mob."
+    5: "&7Increases melee damage dealt by &a50% &7for the first three hits on a mob."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aI-V&7)"
+    - " &7- Bazaar (&aV&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 19
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 7
+  conflicts:
+    - FIRST_STRIKE
+#-------------------------------------------#
+#              True Protection              #
+#-------------------------------------------#
+TRUE_PROTECTION:
+  name: "True Protection"
+  min-level: 1
+  max-level: 1
+  anvil:
+    max-anvil-combine: 1
+    max-anvil-apply: 1
+    cost:
+      1: 36
+  rarities:
+    1: "COMMON"
+  description:
+    1: "&7Grants &f+5 ❂ True Defense&7."
+  sources:
+    - " &7- Old Shaman Nyko (&aI&7)"
+    - " &7- Bazaar (&aI&7)"
+  support-categories:
+    - CHESTPLATE
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 15
+#-------------------------------------------#
+#                Turbo-Cacti                #
+#-------------------------------------------#
+TURBO_CACTI:
+  name: "Turbo-Cacti"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Cactus Fortune&7."
+    2: "&7Grants &6+10 ☘ Cactus Fortune&7."
+    3: "&7Grants &6+15 ☘ Cactus Fortune&7."
+    4: "&7Grants &6+20 ☘ Cactus Fortune&7. Requires &cBronze &7in a &aCactus Contest&7!"
+    5: "&7Grants &6+25 ☘ Cactus Fortune&7. Requires &fSilver &7in a &aCactus Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - AXE
+    - HOE
+#-------------------------------------------#
+#                 Turbo-Cane                #
+#-------------------------------------------#
+TURBO_CANE:
+  name: "Turbo-Cane"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Sugar Cane Fortune&7."
+    2: "&7Grants &6+10 ☘ Sugar Cane Fortune&7."
+    3: "&7Grants &6+15 ☘ Sugar Cane Fortune&7."
+    4: "&7Grants &6+20 ☘ Sugar Cane Fortune&7. Requires &cBronze &7in a &aSugar Cane Contest&7!"
+    5: "&7Grants &6+25 ☘ Sugar Cane Fortune&7. Requires &fSilver &7in a &aSugar Cane Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - HOE
+#-------------------------------------------#
+#                Turbo-Carrot               #
+#-------------------------------------------#
+TURBO_CARROT:
+  name: "Turbo-Carrot"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Carrot Fortune&7."
+    2: "&7Grants &6+10 ☘ Carrot Fortune&7."
+    3: "&7Grants &6+15 ☘ Carrot Fortune&7."
+    4: "&7Grants &6+20 ☘ Carrot Fortune&7. Requires &cBronze &7in a &aCarrot Contest&7!"
+    5: "&7Grants &6+25 ☘ Carrot Fortune&7. Requires &fSilver &7in a &aCarrot Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - HOE
+#-------------------------------------------#
+#                Turbo-Cocoa                #
+#-------------------------------------------#
+TURBO_COCOA:
+  name: "Turbo-Cocoa"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Cocoa Beans Fortune&7."
+    2: "&7Grants &6+10 ☘ Cocoa Beans Fortune&7."
+    3: "&7Grants &6+15 ☘ Cocoa Beans Fortune&7."
+    4: "&7Grants &6+20 ☘ Cocoa Beans Fortune&7. Requires &cBronze &7in a &aCocoa Beans Contest&7!"
+    5: "&7Grants &6+25 ☘ Cocoa Beans Fortune&7. Requires &fSilver &7in a &aCocoa Beans Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - AXE
+#-------------------------------------------#
+#                Turbo-Melon                #
+#-------------------------------------------#
+TURBO_MELON:
+  name: "Turbo-Melon"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Melon Fortune&7."
+    2: "&7Grants &6+10 ☘ Melon Fortune&7."
+    3: "&7Grants &6+15 ☘ Melon Fortune&7."
+    4: "&7Grants &6+20 ☘ Melon Fortune&7. Requires &cBronze &7in a &aMelon Contest&7!"
+    5: "&7Grants &6+25 ☘ Melon Fortune&7. Requires &fSilver &7in a &aMelon Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - AXE
+#-------------------------------------------#
+#              Turbo-Mushrooms              #
+#-------------------------------------------#
+TURBO_MUSHROOMS:
+  name: "Turbo-Mushrooms"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Mushroom Fortune&7."
+    2: "&7Grants &6+10 ☘ Mushroom Fortune&7."
+    3: "&7Grants &6+15 ☘ Mushroom Fortune&7."
+    4: "&7Grants &6+20 ☘ Mushroom Fortune&7. Requires &cBronze &7in a &aMushroom Contest&7!"
+    5: "&7Grants &6+25 ☘ Mushroom Fortune&7. Requires &fSilver &7in a &aMushroom Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - HOE
+#-------------------------------------------#
+#                Turbo-Potato               #
+#-------------------------------------------#
+TURBO_POTATO:
+  name: "Turbo-Potato"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Potato Fortune&7."
+    2: "&7Grants &6+10 ☘ Potato Fortune&7."
+    3: "&7Grants &6+15 ☘ Potato Fortune&7."
+    4: "&7Grants &6+20 ☘ Potato Fortune&7. Requires &cBronze &7in a &aPotato Contest&7!"
+    5: "&7Grants &6+25 ☘ Potato Fortune&7. Requires &fSilver &7in a &aPotato Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - HOE
+#-------------------------------------------#
+#               Turbo-Pumpkin               #
+#-------------------------------------------#
+TURBO_PUMPKIN:
+  name: "Turbo-Pumpkin"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Pumpkin Fortune&7."
+    2: "&7Grants &6+10 ☘ Pumpkin Fortune&7."
+    3: "&7Grants &6+15 ☘ Pumpkin Fortune&7."
+    4: "&7Grants &6+20 ☘ Pumpkin Fortune&7. Requires &cBronze &7in a &aPumpkin Contest&7!"
+    5: "&7Grants &6+25 ☘ Pumpkin Fortune&7. Requires &fSilver &7in a &aPumpkin Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - AXE
+#-------------------------------------------#
+#                Turbo-Warts               #
+#-------------------------------------------#
+TURBO_WARTS:
+  name: "Turbo-Warts"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Nether Wart Fortune&7."
+    2: "&7Grants &6+10 ☘ Nether Wart Fortune&7."
+    3: "&7Grants &6+15 ☘ Nether Wart Fortune&7."
+    4: "&7Grants &6+20 ☘ Nether Wart Fortune&7. Requires &cBronze &7in a &aNether Wart Contest&7!"
+    5: "&7Grants &6+25 ☘ Nether Wart Fortune&7. Requires &fSilver &7in a &aNether Wart Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - HOE
+#-------------------------------------------#
+#                Turbo-Wheat               #
+#-------------------------------------------#
+TURBO_WHEAT:
+  name: "Turbo-Wheat"
+  min-level: 1
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      1: 9
+      2: 18
+      3: 27
+      4: 35
+      5: 45
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    1: "&7Grants &6+5 ☘ Wheat Fortune&7."
+    2: "&7Grants &6+10 ☘ Wheat Fortune&7."
+    3: "&7Grants &6+15 ☘ Wheat Fortune&7."
+    4: "&7Grants &6+20 ☘ Wheat Fortune&7. Requires &cBronze &7in a &aWheat Contest&7!"
+    5: "&7Grants &6+25 ☘ Wheat Fortune&7. Requires &fSilver &7in a &aWheat Contest&7!"
+  sources:
+    - " &7- Jacob's Farming Contest (&aI-V&7)"
+    - " &7- Bazaar (&aI-V&7)"
+  support-categories:
+    - HOE
+#-------------------------------------------#
+#                 Vampirism                 #
+#-------------------------------------------#
+VAMPIRISM:
+  name: "Vampirism"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Heals for &a1% &7of your missing health whenever you kill an enemy."
+    2: "&7Heals for &a2% &7of your missing health whenever you kill an enemy."
+    3: "&7Heals for &a3% &7of your missing health whenever you kill an enemy."
+    4: "&7Heals for &a4% &7of your missing health whenever you kill an enemy."
+    5: "&7Heals for &a5% &7of your missing health whenever you kill an enemy."
+    6: "&7Heals for &a6% &7of your missing health whenever you kill an enemy."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Spooky Festival (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 15
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 15
+#-------------------------------------------#
+#                  Venomous                 #
+#-------------------------------------------#
+VENOMOUS:
+  name: "Venomous"
+  min-level: 1
+  max-level: 6
+  enchanting-table:
+    min-level: 1
+    max-level: 5
+    cost:
+      1: 20
+      2: 25
+      3: 30
+      4: 40
+      5: 50
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 6
+    cost:
+      1: 18
+      2: 23
+      3: 27
+      4: 36
+      5: 45
+      6: 179
+  rarities:
+    1: "COMMON"
+    2: "COMMON"
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+    6: "RARE"
+  description:
+    1: "&7Reduces the target's walk speed by &a5% &7and deals &2+0.3% &7of your damage per second per hit, stacking globally up to &240 &7hits. Lasts &65s&7."
+    2: "&7Reduces the target's walk speed by &a10% &7and deals &2+0.6% &7of your damage per second per hit, stacking globally up to &240 &7hits. Lasts &65s&7."
+    3: "&7Reduces the target's walk speed by &a15% &7and deals &2+0.9% &7of your damage per second per hit, stacking globally up to &240 &7hits. Lasts &65s&7."
+    4: "&7Reduces the target's walk speed by &a20% &7and deals &2+1.2% &7of your damage per second per hit, stacking globally up to &240 &7hits. Lasts &65s&7."
+    5: "&7Reduces the target's walk speed by &a25% &7and deals &2+1.5% &7of your damage per second per hit, stacking globally up to &240 &7hits. Lasts &65s&7."
+    6: "&7Reduces the target's walk speed by &a30% &7and deals &2+1.8% &7of your damage per second per hit, stacking globally up to &240 &7hits. Lasts &65s&7."
+  sources:
+    - " &7- Enchantment Table (&aI-V&7)"
+    - " &7- Experiments (&aVI&7)"
+    - " &7- Bazaar (&aVI&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 17
+    2:
+      type: "BOOKSHELF_POWER"
+      amount: 20
+#-------------------------------------------#
+#                   Vicious                 #
+#-------------------------------------------#
+VICIOUS:
+  name: "Vicious"
+  min-level: 3
+  max-level: 5
+  anvil:
+    max-anvil-combine: 5
+    max-anvil-apply: 5
+    cost:
+      3: 55
+      4: 79
+      5: 91
+  rarities:
+    3: "COMMON"
+    4: "COMMON"
+    5: "UNCOMMON"
+  description:
+    3: "&7Grants &c+3 ⫽ Ferocity&7."
+    4: "&7Grants &c+4 ⫽ Ferocity&7."
+    5: "&7Grants &c+5 ⫽ Ferocity&7."
+  sources:
+    - " &7- Dark Auction (&aIII-V&7)"
+    - " &7- Bazaar (&aIII-V&7)"
+  support-categories:
+    - SWORD
+    - LONG_SWORD
+    - FISHING_WEAPON
+    - GAUNTLET
+    - BOW
+  requirements:
+    1:
+      type: "SKILL"
+      skill: "ENCHANTING"
+      level: 26
