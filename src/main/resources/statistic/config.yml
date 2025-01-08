@@ -21,10 +21,10 @@ action-bar:
     priority: 1
     message: "<color:%lstats_health_color%>%lstats_health_fixed_0%/%lstats_health_fixed_0_max%%lstats_health_symbol%</color>     <color:%lstats_defense_color%>%lstats_defense_fixed_0%%lstats_defense_symbol% %lstats_defense_name%</color>     <color:%lstats_intelligence_color%>%lstats_mana_fixed_0%/%lstats_mana_fixed_0_max%%lstats_intelligence_symbol%</color>"
 
-statistic:
 #-------------------------------------------#
 #                Combat Stats               #
 #-------------------------------------------#
+statistic:
   combat-stats:
     health:
       name: "Health"
@@ -87,6 +87,79 @@ statistic:
       base-value: 3
       max-value: 15
 #-------------------------------------------#
+#              Gathering Stats              #
+#-------------------------------------------#
+  gathering-stats:
+    mining-speed:
+      name: "Mining Speed"
+      color: "#FFAA00"
+      base-value: 0
+      max-value: -1
+    mining-fortune:
+      name: "Mining Fortune"
+      color: "#FFAA00"
+      base-value: 0
+      max-value: -1
+    mining-spread:
+      name: "Mining Spread"
+      color: "#FFAA00"
+      base-value: 0
+      max-value: -1
+    farming-fortune:
+      name: "Farming Fortune"
+      color: "#FFAA00"
+      base-value: 0
+      max-value: -1
+    foraging-fortune:
+      name: "Foraging Fortune"
+      color: "#FFAA00"
+      base-value: 0
+      max-value: -1
+#-------------------------------------------#
+#                Wisdom Stats               #
+#-------------------------------------------#
+  wisdom-stats:
+    alchemy:
+      name: "Alchemy Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    carpentry:
+      name: "Carpentry Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    combat:
+      name: "Combat Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    enchanting:
+      name: "Enchanting Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    farming:
+      name: "Farming Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    fishing:
+      name: "Fishing Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    foraging:
+      name: "Foraging Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+    mining:
+      name: "Mining Wisdom"
+      color: "#00AAAA"
+      base-value: 0
+      max-value: -1
+#-------------------------------------------#
 #                 Misc Stats                #
 #-------------------------------------------#
   misc-stats:
@@ -95,6 +168,11 @@ statistic:
       color: "#FFFFFF"
       base-value: 100
       max-value: 500
+    magic-find:
+      name: "Magic Find"
+      color: "#55FFFF"
+      base-value: 0
+      max-value: -1
 #-------------------------------------------#
 #                Other Stats                #
 #-------------------------------------------#
